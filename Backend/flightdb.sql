@@ -84,7 +84,7 @@ CREATE TABLE `reviews` (
   `flight_id` int(11) NOT NULL,
   `rating` int(1) NOT NULL,
   `review_text` text NOT NULL,
-  `aproved` bit(1), 
+  `aproved` bit(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -97,7 +97,7 @@ CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `user_name` varchar(255) NOT NULL,
   `user_email` varchar(255) NOT NULL,
-  `user_password` varchar(255) NOT NULL,
+  `user_password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -162,8 +162,7 @@ ALTER TABLE `reviews`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
-  ADD KEY `user_id` (`user_id`,`user_name`,`user_password`,`wallet_id`),
-  ADD KEY `wallet_id` (`wallet_id`);
+  ADD KEY `user_id` (`user_id`,`user_name`,`user_password`);
 
 --
 -- Indexes for table `wallets`
@@ -231,12 +230,6 @@ ALTER TABLE `flights`
 ALTER TABLE `reviews`
   ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`flight_id`) REFERENCES `flights` (`flight_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`wallet_id`) REFERENCES `wallets` (`wallet_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `wallets`
