@@ -84,7 +84,7 @@ CREATE TABLE `reviews` (
   `flight_id` int(11) NOT NULL,
   `rating` int(1) NOT NULL,
   `review_text` text NOT NULL,
-  `aproved` bit(1)
+  `aproved` bit(1), 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

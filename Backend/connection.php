@@ -1,12 +1,14 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-$host = "localhost";
-$db_user = "root";
-$db_pass = null;
-$db_name = "flightdb";
+    $host = "localhost";
+    $user = "root";
+    $pass = "";
+    $db_name = "flightdb";
+    $port = "3308";
 
-$mysqli = new mysqli($host, $db_user, $db_pass, $db_name);
+    $mysqli = new mysqli($host, $user, $pass, $db_name,$port);
+    if ($mysqli->connect_error) {
+        die("". $mysqli->connect_error);
+    }
 
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
-}
+
+
