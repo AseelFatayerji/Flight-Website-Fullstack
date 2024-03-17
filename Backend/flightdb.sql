@@ -83,7 +83,8 @@ CREATE TABLE `reviews` (
   `user_id` int(11) NOT NULL,
   `flight_id` int(11) NOT NULL,
   `rating` int(1) NOT NULL,
-  `review_text` text NOT NULL
+  `review_text` text NOT NULL,
+  `aproved` bit(1), 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -95,8 +96,8 @@ CREATE TABLE `reviews` (
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `user_name` varchar(255) NOT NULL,
+  `user_email` varchar(255) NOT NULL,
   `user_password` varchar(255) NOT NULL,
-  `wallet_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
