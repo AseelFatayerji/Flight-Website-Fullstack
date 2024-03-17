@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
-    <link rel="stylesheet" href="../CSS/signup.css" />
+    <link rel="stylesheet" href="../CSS/login.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -26,22 +26,8 @@
 
       <div class="right flex-center">
         <div class="form" id="form">
-          <h1>Sign Up</h1>
-          <form id="signupForm">
-            <label for="user_name">Username:</label>
-            <div class="input flex">
-              <div class="icon flex-center">
-                <i class="fa-solid fa-user"></i>
-              </div>
-              <input
-                type="text"
-                id="user_name"
-                name="user_name"
-                required
-                placeholder="Ahmad-Handoush"
-              />
-            </div>
-
+          <h1>Login</h1>
+          <form id="loginForm">
             <label for="user_email">Email:</label>
             <div class="input flex">
               <div class="icon flex-center">
@@ -70,10 +56,10 @@
               />
             </div>
 
-            <button type="submit" class="btn-signup">Sign Up</button>
+            <button type="submit" class="btn-signup">Login</button>
 
-            <a href="./login.html" id="to-login" class="to-login"
-              >Already have an account?</a
+            <a href="./signUp.html" id="to-login" class="to-login"
+              >don't have an accont?</a
             >
           </form>
 
@@ -81,6 +67,6 @@
         </div>
       </div>
     </div>
-    <script src="../Scripts/signup.js"></script>
+    <script src="../Scripts/login.js"></script>
   </body>
 </html>
