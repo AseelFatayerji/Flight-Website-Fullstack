@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signupForm");
   const messageDiv = document.getElementById("message");
+  const user_name = document.getElementById("user_name");
 
   const signUp = async () => {
     const formData = new FormData(signupForm);
 
     try {
       const response = await fetch(
-        "http://localhost/flights/Flight-Website-Fullsatack/Backend/signup.php",
+        "http://localhost/flights/Flight-Website-Fullsatack/backend/signup.php",
         {
           method: "POST",
           body: formData,
