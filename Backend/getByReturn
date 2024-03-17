@@ -2,14 +2,14 @@
 
 include 'connection.php';
 
-$departure = $_GET['departure'];
+$return = $_GET['return'];
 
-$query = $mysqli->prepare("SELECT * FROM flights WHERE departure_date > ?");
-$query->bind_param('s', $departure);
+$query = $mysqli->prepare("SELECT * FROM flights WHERE return_date < ?");
+$query->bind_param('s', $return);
 $query->execute();
 $result = $query->store_result();
 
-$flightsByDeparture = array();
+$flightsByReturn = array();
 $query->bind_result($id, $destination, $airport, $plane, $departure, $return,$price,$nbOfPassengers);
 while($query->fetch()){
     $flight = array(
@@ -22,7 +22,7 @@ while($query->fetch()){
         'price' => $price,
         'nbOfPassengers' => $nbOfPassengers
     );
-    array_push($flightsByDeparture, $flight);
+    array_push($flightsByReturn, $flight);
     $response['status'] = "success";
-    $response['flightsByDeparture'] = $flightsByDeparture;
+    $response['flightsByReturn'] = $flightsByReturn;
 }
