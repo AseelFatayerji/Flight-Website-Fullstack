@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signupForm");
   const messageDiv = document.getElementById("message");
-  //   const toLogin = document.getElementById("to-login");
 
   const signUp = async () => {
     const formData = new FormData(signupForm);
