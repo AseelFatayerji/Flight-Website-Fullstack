@@ -1,3 +1,4 @@
+
 <?php
     header("Access-Control-Allow-Origin: *");
     $host = "localhost";
@@ -10,6 +11,7 @@
     if ($mysqli->connect_error) {
         die("". $mysqli->connect_error);
     }
+
 
 
 
