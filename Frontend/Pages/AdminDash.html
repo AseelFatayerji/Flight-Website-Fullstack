@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="../CSS/admin.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/3466402afb.js"
+      crossorigin="anonymous"
+    ></script>
+
+  </head>
+  <body class="float-container">
+    <div>
+      <nav>
+        <div>
+          <ul>
+            <li>
+              <a id="AdminDash.html" onclick="Redirect(this)"
+                >Dashboard</a
+              >
+            </li>
+            <li>
+              <a id="AdminFlight.html" onclick="Redirect(this)"
+                >Bookings</a
+              >
+            </li>
+            <li>
+              <a id="AdminSupport.html" onclick="Redirect(this)"
+                >Support</a
+              >
+            </li>
+            <li>
+              <a id="AdminWallet.html" onclick="Redirect(this)"
+                >Wallet</a
+              >
+            </li>
+            <li>
+              <a id="AdminReview.html" onclick="Redirect(this)"
+                >Review</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="right bottom">
+          <i><a href="../Index.html"><i class="fa-solid fa-right-from-bracket"></i></a></i>
+        </div>
+      </nav>
+    </div>
+    <div class="main">
+      <div class="card float-container"><div class="card-header"><i class="fa-solid fa-users"></i></div><div class="card-body" id="users"></div></div>
+      <div class="card float-container"><div class="card-header"><i class="fa-solid fa-plane-departure"></i></div><div class="card-body" id="bookings"></div></div>
+      <div class="card float-container"><div class="card-header"><i class="fa-solid fa-money-bills"></i></div><div class="card-body" id="revenue"></div></div>
+    </div>
+  </body>
+  <script src="../Scripts/admin.js"></script>
+  <script src="../Scripts/dash.js"></script>
+</html>

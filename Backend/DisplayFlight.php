@@ -1,6 +1,6 @@
 <?php
 include 'connection.php';
-$readSql = "SELECT * FROM flights";
+$readSql = "SELECT * FROM flights JOIN planes ON planes.plane_id = flights.plane_id";
 $result = mysqli_query($mysqli, $readSql);
 
 $list = [];

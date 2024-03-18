@@ -4,7 +4,6 @@ const user_name = document.getElementById("user_name");
 
 const signUp = async () => {
   const formData = new FormData(signupForm);
-
   try {
     const response = await fetch(
       "http://localhost/flights/flight-website-fullsatack/backend/signup.php",
