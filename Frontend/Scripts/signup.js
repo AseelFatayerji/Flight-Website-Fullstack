@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await fetch(
-        "http://localhost/flights/Flight-Website-Fullsatack/backend/signup.php",
+        "http://localhost/fullstack/Flight%20Website/Backend/signup.php",
         {
           method: "POST",
           body: formData,

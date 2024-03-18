@@ -1,0 +1,75 @@
+:root{
+    --main:darkgray;
+    --accent:rgb(37, 37, 37);
+}
+*{
+    margin: 0%;
+    
+}
+nav{
+    padding: 10px;
+    height: 100%;
+    max-height: 100%;
+    position: fixed;
+    width: 20%;
+    background-color: var(--main);
+    font-size: 26px;
+    font-weight: bold;
+    border-radius: 0px 15px 15px 0px;
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+}
+a:hover{
+    color: white;
+    cursor: pointer;
+}
+ul{
+    list-style: none;
+
+}
+li{
+    padding-bottom: 10px;
+}
+.main{
+    margin-left: 25%;
+    padding: 20px;
+}
+.card{
+    height: fit-content;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.card-header{
+    border-radius: 10px 0px 0px 10px;
+    background-color: var(--accent);
+    color: white;
+    font-size: 36px;
+    padding: 10px;
+    width: fit-content;
+}
+.card-body{    
+    border-radius: 0px 8px 8px 0px;
+    background-color: var(--main);
+    font-size: 26px;
+    font-weight: bold;
+    padding: 10px;
+    width: 100%;
+    
+}
+
+.float-container{
+    display: flex;
+}
+.space-even{
+    justify-content: space-evenly;
+}
+.bottom{
+    margin-top: 130%;
+}
+.right{
+    text-align: end;
+    padding: 10px;
+}
