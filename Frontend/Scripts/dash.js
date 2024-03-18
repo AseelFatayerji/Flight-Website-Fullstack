@@ -5,11 +5,11 @@ window.onload = () =>{
 }
 
 async function displayUsers(){
-    let container = document.getElementById("users")
+    const container = document.getElementById("users")
     const users =  await fetch("http://localhost/fullstack/Flight%20Website/Backend/DisplayUsers.php").then(function(response){
-        let result = response.json()
+        const result = response.json()
         result.then(function(list){
-            let h4  = document.createElement("h4")
+            const h4  = document.createElement("h4")
             h4.innerText = "Total users: "+list.length;
             container.appendChild(h4)
         }).catch(function (err) {
