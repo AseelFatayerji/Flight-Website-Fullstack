@@ -10,6 +10,7 @@ $query->bind_param('ii', $user, $flight);
 $query->execute();
 $query->store_result();
 $query->bind_result($id,$user,$flight, $rating, $comment);
+$query->fetch();
 
 $response['status'] = "success";
 $response['review'] = [
