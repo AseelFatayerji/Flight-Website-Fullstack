@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 include('./connection.php');
 
 
@@ -22,6 +23,6 @@ if ($email_exists == 0) {
     $response['message'] = "user $user_name was created successfully";
 } else {
     $response["status"] = "user already exists";
-    $response["message"] = "user $user_name wasn't created";
+    $response["message"] = "user $user_name already exist";
 }
 echo json_encode($response);

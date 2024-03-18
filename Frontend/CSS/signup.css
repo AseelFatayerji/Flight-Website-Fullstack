@@ -174,3 +174,6 @@ p {
   text-decoration: underline;
   cursor: pointer;
 }
+.error-message {
+  color: red;
+}
