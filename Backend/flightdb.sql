@@ -106,6 +106,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   KEY `flight_id` (`flight_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
 -- --------------------------------------------------------
 
 --
@@ -120,6 +121,30 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wallets`
+--
+
+CREATE TABLE `wallets` (
+  `wallet_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `balance` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `airports`
+--
+ALTER TABLE `airports`
+  ADD PRIMARY KEY (`airport_id`),
+  ADD KEY `airport_id` (`airport_id`,`location`);
 
 --
 -- Dumping data for table `users`
