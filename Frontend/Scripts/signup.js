@@ -17,6 +17,7 @@ const signUp = async () => {
     if (response.ok) {
       const data = await response.json();
       messageDiv.textContent = data.message;
+      window.location.replace("../Pages/login.html");
     } else {
       const errorMessage = await response.text();
       messageDiv.textContent = `Error: ${errorMessage}`;

@@ -1,39 +1,33 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const loginForm = document.getElementById("loginForm");
-  const messageDiv = document.getElementById("message");
+const loginForm = document.getElementById("loginForm");
+const messageDiv = document.getElementById("message");
 
-  loginForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+const login = async () => {
+  const formData = new FormData(loginForm);
 
-    const formData = new FormData(loginForm);
-
-    fetch(
-      "http://localhost:8000/flights/flight-website-fullsatack/backend/login.php",
+  try {
+    const response = await fetch(
+      "http://localhost/flights/flight-website-fullsatack/backend/login.php",
       {
         method: "POST",
         body: formData,
       }
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // Check if authentication was successful
-        if (data.success) {
-          // Redirect to dashboard or another page on successful login
-          window.location.href = "/dashboard.html";
-        } else {
-          // Display error message
-          messageDiv.textContent = "Invalid email or password";
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error.message);
-        // Display error message
-        messageDiv.textContent = "An error occurred. Please try again later.";
-      });
-  });
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      messageDiv.textContent = data.message;
+      window.location.replace("../Pages/profile.html");
+    } else {
+      const errorMessage = await response.text();
+      messageDiv.textContent = `Error: ${errorMessage}`;
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    messageDiv.textContent = "An error occurred. Please try again later.";
+  }
+};
+
+loginForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  login();
 });
