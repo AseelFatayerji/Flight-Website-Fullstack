@@ -52,7 +52,7 @@ function displayOne(booking) {
 
   card.className = "row";
   card_body.className = "table-body space-even ";
-  card_header.className = "icon-header accent-bg";
+  card_header.className = "card-header accent-bg";
   icon.className = "fa-solid fa-book";
   trash.className = "fa-solid fa-trash trash";
   trash.onclick = () => {

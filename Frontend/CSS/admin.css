@@ -69,7 +69,8 @@ li{
 .row{
     display: flex;
     height: fit-content;
-    padding: 10px;
+    padding: 10px 10px 10px 20px;
+    margin-bottom: -30px;
 }
 .text-header{
     border-radius: 10px;

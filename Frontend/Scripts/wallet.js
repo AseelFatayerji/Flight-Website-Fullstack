@@ -42,7 +42,7 @@ function displayOne(list) {
 
   icon.className = "fa-solid fa-money-bills";
   card.className = "row";
-  card_header.className = "icon-header accent-bg";
+  card_header.className = "card-header accent-bg";
   card_body.className = "table-body float-contanier space-even main-bg";
 
   card_body.appendChild(user);
