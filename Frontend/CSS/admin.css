@@ -58,16 +58,18 @@ li{
     width: 100%;
 }
 
-.icon:hover{
-    color: greenyellow;
-    cursor: pointer;
-}
+
 
 .card{
     display: flex;
     height: fit-content;
     padding: 10px;
     margin-bottom: 10px;
+}
+.row{
+    display: flex;
+    height: fit-content;
+    padding: 10px;
 }
 .text-header{
     border-radius: 10px;
@@ -109,6 +111,10 @@ li{
     padding: 10px;
     position: fixed;
 
+}
+.icon:hover{
+    color: greenyellow;
+    cursor: pointer;
 }
 
 .add{

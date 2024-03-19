@@ -57,9 +57,9 @@ function displayOne(flight) {
   ul.appendChild(ret);
   ul.appendChild(plane);
 
-  card.className = "card";
+  card.className = "row";
   card_body.className = "card-body ";
-  card_header.className = "card-header accent-bg";
+  card_header.className = "icon-header accent-bg";
 
   card_body.appendChild(ul);
   card_body.appendChild(formdiv);

@@ -1,26 +1,24 @@
 window.onload = () => {
-  displayReview();
+  displayRequest();
 };
 
-async function displayReview() {
+async function displayRequest() {
   const flight = await fetch(
-    "http://localhost/fullstack/Flight%20Website/Backend/DisplayReviews.php"
+    "http://localhost/fullstack/Flight%20Website/Backend/DisplayRequest.php"
   )
     .then(function (response) {
       const result = response.json();
       result
         .then(function (list) {
-          const container = document.getElementById("review");
+          const container = document.getElementById("coin");
           const title = document.createElement("div");
           title.className = "float-container gap space-even title";
           title.innerHTML =
-            "<div>User name</div><div>Review</div><div>Rating</div><div>Action</div>";
+            "<div>User name</div><div>Amount</div><div>Action</div>";
           container.appendChild(title);
           for (let i = 0; i < list.length; i++) {
             let temp = list[i];
-            if (temp.aproved == 0) {
-              displayOne(temp);
-            }
+            displayOne(temp);
           }
         })
         .catch(function (err) {
@@ -32,25 +30,23 @@ async function displayReview() {
     });
 }
 function displayOne(list) {
-  const container = document.getElementById("review");
+  const container = document.getElementById("coin");
   const card = document.createElement("div");
   const card_header = document.createElement("div");
   const card_body = document.createElement("div");
   const icon = document.createElement("i");
 
   const user = createListItem(list.user);
-  const review = createListItem(list.review);
-  const rating = createStars(list.rating);
+  const amount = createListItem(list.amount);
   const form = createForm(list);
 
-  icon.className = "fa-solid fa-comment";
+  icon.className = "fa-solid fa-money-bills";
   card.className = "row";
   card_header.className = "icon-header accent-bg";
   card_body.className = "table-body float-contanier space-even main-bg";
 
   card_body.appendChild(user);
-  card_body.appendChild(review);
-  card_body.appendChild(rating);
+  card_body.appendChild(amount);
   card_body.appendChild(form);
   card_header.appendChild(icon);
   card.appendChild(card_header);
@@ -64,6 +60,7 @@ function createForm(list) {
   const rej = document.createElement("i");
   const name = document.createElement("input");
   const id = document.createElement("input");
+  const wallet = document.createElement("input");
 
   form.className = "float-container space-even gap";
   form.method = "post";
@@ -72,11 +69,11 @@ function createForm(list) {
   rej.className = "fa-solid fa-trash-can trash";
 
   acc.onclick = () => {
-    form.action = "../../Backend/AcceptReview.php";
+    form.action = "../../Backend/AddtoWallet.php";
     form.submit();
   };
   rej.onclick = () => {
-    form.action = "../../Backend/RejectReview.php";
+    form.action = "../../Backend/DeleteRequest.php";
     form.submit();
   };
   name.name = "textname";
@@ -89,10 +86,17 @@ function createForm(list) {
   id.value = list.id;
   id.className = "hidden";
 
+  wallet.name = "wallet";
+  wallet.type = "number";
+  wallet.value = list.wallet;
+  wallet.className = "hidden";
+
   form.appendChild(acc);
   form.appendChild(rej);
   form.appendChild(name);
   form.appendChild(id);
+  form.appendChild(wallet);
+
   return form;
 }
 function createListItem(item) {
@@ -102,13 +106,4 @@ function createListItem(item) {
   li.appendChild(text);
 
   return li;
-}
-function  createStars(star){
-    const stars = document.createElement("div")
-    for(let i = 1; i <= parseInt(star);i++ ){
-        const rate = document.createElement("i")
-        rate.className = "fa-solid fa-star"
-        stars.appendChild(rate)
-    }
-    return stars
 }
