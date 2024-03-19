@@ -16,6 +16,9 @@ html {
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  position: relative;
+}
 ::selection {
   background-color: var(--main-color);
   color: var(--bg-white);
@@ -92,7 +95,9 @@ a {
   margin-right: auto;
   margin-left: auto;
   border-radius: 8px;
+  position: relative;
 }
+
 .about ul {
   gap: 20px;
   width: 100%;
@@ -129,4 +134,57 @@ a {
 .edit i {
   font-weight: bold;
   font-size: 30px;
+}
+.edit-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--main-color);
+  z-index: 100;
+  display: none;
+}
+.open {
+  display: block;
+}
+.edit-box form {
+  gap: 20px;
+  padding: 20px;
+}
+.edit-box form input {
+  background-color: transparent;
+  color: white;
+  width: 100%;
+  height: 30px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-bottom: 1px solid var(--bg-white);
+}
+
+.edit-box form input::placeholder {
+  color: wheat;
+}
+.edit-box form button {
+  padding: 10px;
+  background-color: var(--bg-white);
+  color: var(--main-color);
+  border: none;
+  outline: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 20px;
+}
+.overlay {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  display: none;
+}
+.active {
+  display: block;
 }

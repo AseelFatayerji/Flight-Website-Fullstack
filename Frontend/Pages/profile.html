@@ -14,6 +14,7 @@
     <title>User Profile</title>
   </head>
   <body>
+    <div class="overlay" id="overlay"></div>
     <section class="profile flex">
       <div class="left">
         <div class="image">
@@ -43,6 +44,29 @@
           <button class="edit flex-center" id="edit">
             <i class="fa-solid fa-plus"></i>
           </button>
+          <div class="edit-box" id="editBox">
+            <form id="editForm" class="editForm flex column">
+              <input
+                type="text"
+                name="user_name"
+                id="user_name"
+                placeholder="Enter your name... "
+              />
+              <input
+                type="email"
+                name="user_email"
+                id="user_email"
+                placeholder="Enter your email... "
+              />
+              <input
+                type="password"
+                name="user_password"
+                id="user_password"
+                placeholder="Enter your password... "
+              />
+              <button type="submit">Edit</button>
+            </form>
+          </div>
         </div>
         <div class="history">
           <h1>Booking History</h1>
@@ -52,6 +76,7 @@
         </div>
       </div>
     </section>
+
     <script src="../Scripts/profile.js"></script>
   </body>
 </html>
