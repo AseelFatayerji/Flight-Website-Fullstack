@@ -19,10 +19,7 @@ html {
 body {
   position: relative;
 }
-::selection {
-  background-color: var(--main-color);
-  color: var(--bg-white);
-}
+
 .t-center {
   position: absolute;
   top: 50%;
@@ -65,10 +62,12 @@ a {
 }
 .profile {
   gap: 20px;
+  background-color: var(--main-color);
 }
 .left {
   width: 40%;
   height: 100vh;
+  background-color: var(--bg-white);
 }
 .image {
   width: 100%;
@@ -79,14 +78,20 @@ a {
   height: 100%;
 }
 .right {
-  margin-top: 2rem;
+  padding-top: 2rem;
   width: 70%;
+  background-color: var(--bg-white);
 }
 .right > h1 {
   text-align: center;
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 2rem;
+  border: 2px solid var(--main-color);
+  padding: 10px;
+  width: 300px;
+  margin-right: auto;
+  margin-left: auto;
 }
 .right .about {
   padding: 20px;
@@ -200,4 +205,19 @@ a {
   font-size: 30px;
   color: white;
   cursor: pointer;
+}
+.booking-his {
+  padding: 2rem;
+  width: 100%;
+}
+.booking-his h1 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  border: 2px solid var(--main-color);
+  padding: 10px;
+  width: 400px;
+  margin-right: auto;
+  margin-left: auto;
 }
