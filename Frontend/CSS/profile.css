@@ -60,14 +60,17 @@ ul {
 a {
   text-decoration: none;
 }
-.profile {
-  gap: 20px;
-  background-color: var(--main-color);
-}
+
 .left {
   width: 40%;
   height: 100vh;
   background-color: var(--bg-white);
+  position: sticky;
+  top: 0;
+}
+h1:hover {
+  background-color: var(--main-color);
+  color: white;
 }
 .image {
   width: 100%;
@@ -220,4 +223,23 @@ a {
   width: 400px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.histories {
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+  gap: 20px;
+}
+.his {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: white;
+  background-color: var(--main-color);
+  padding: 10px;
+  border-radius: 6px;
+}
+.his li {
+  font-weight: bold;
 }

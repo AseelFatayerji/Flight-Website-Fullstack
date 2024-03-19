@@ -6,6 +6,7 @@ const info = document.getElementById("info");
 const closing = document.getElementById("close");
 const overlay = document.getElementById("overlay");
 const userId = JSON.parse(localStorage.getItem("userId"));
+
 const fetchUserProfile = (userId) => {
   fetch(
     `http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/profile.php?id=${userId}`
@@ -31,6 +32,9 @@ const closeBox = () => {
   editBox.classList.remove("open");
   overlay.classList.remove("active");
 };
+const reload = () => {
+  window.location.reload();
+};
 
 const displayUserProfile = (data) => {
   const { id, user_name, user_email } = data;
@@ -50,6 +54,7 @@ const displayUserProfile = (data) => {
 const editingUser = async () => {
   const formData = new FormData(editForm);
   formData.append("user_id", userId);
+  console.log(userId);
 
   try {
     const response = await fetch(
@@ -66,9 +71,10 @@ const editingUser = async () => {
 
     const data = await response.json();
     if (data.success) {
-      alert("Profile updated successfully");
+      alert("User data updated successfully");
+      setTimeout(reload, 1000);
     } else {
-      alert("Failed to update profile");
+      alert("Failed to update user data");
     }
   } catch (error) {
     console.error("Error:", error.message);
