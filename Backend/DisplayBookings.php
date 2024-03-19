@@ -6,13 +6,13 @@ $result = mysqli_query($mysqli, $readSql);
 $list = [];
 while ($row = mysqli_fetch_assoc($result)) {
     $item = array(
-        'id' => $row['booking_id'],
         'flight' => $row['flight_id'],
         'des'=>$row['flight_destination'],
         'dep'=>$row['departure_date'],
         'ret'=>$row['return_date'],
-        'user' => $row['user_name'],        
-        'payment'=>$roe['payment']
+        'user' => $row['user_name'],    
+        'email'=>$row['user_email'],
+        'payment'=>$row['payment']
     );
     $list[] = $item;    
 }
