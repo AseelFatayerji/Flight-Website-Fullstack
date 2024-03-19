@@ -13,50 +13,113 @@
       src="https://kit.fontawesome.com/3466402afb.js"
       crossorigin="anonymous"
     ></script>
-    <script src="../Scripts/admin.js"></script>
-    <script src="../Scripts/flights.js"></script>
   </head>
-  <body class="float-cotaine space-even">
+  <body class="float-container">
     <div>
       <nav>
         <div>
           <ul>
             <li>
-              <a id="AdminDash.html" onclick="Redirect(this)" 
-                >Dashboard</a
-              >
+              <a id="AdminDash.html" onclick="Redirect(this)">Dashboard</a>
             </li>
             <li>
-              <a id="AdminFlight.html" onclick="Redirect(this)" 
-                >Bookings</a
-              >
+              <a id="AdminFlight.html" onclick="Redirect(this)">Flight</a>
             </li>
             <li>
-              <a id="AdminSupport.html" onclick="Redirect(this)" 
-                >Support</a
-              >
+              <a id="AdminBooking.html" onclick="Redirect(this)">Bookings</a>
             </li>
             <li>
-              <a id="AdminWallet.html" onclick="Redirect(this)" 
-                >Wallet</a
-              >
+              <a id="AdminSupport.html" onclick="Redirect(this)">Support</a>
             </li>
             <li>
-              <a id="AdminReview.html" onclick="Redirect(this)" 
-                >Review</a
-              >
+              <a id="AdminWallet.html" onclick="Redirect(this)">Wallet</a>
+            </li>
+            <li>
+              <a id="AdminReview.html" onclick="Redirect(this)">Review</a>
             </li>
           </ul>
         </div>
         <div class="right bottom">
-          <i><a href="../Index.html"><i class="fa-solid fa-right-from-bracket"></i></a></i>
+          <i
+            ><a onclick="logout(this)" id="/Index.html"
+              ><i class="fa-solid fa-right-from-bracket"></i></a
+          ></i>
         </div>
       </nav>
     </div>
-    <div class="main">
-      <div id="fights"></div>
-
+    <div class="main" >
+      <div class="right">
+        <i class="fa-regular fa-square-plus add" onclick="showPop()"></i>
+      </div>
+      <div id="fights">
       
+      </div>
+      <form
+      action="../../Backend/AddFlight.php"
+      method="post"
+      id="addFlight"
+      class="form hidden"
+    >
+      <div class="float-container">
+        <div>
+          <div class="card">
+            <div class="card-body">
+              <div class="icon-header">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </div>
+              <input type="text" placeholder="destination" name="des" />
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="icon-header">
+                <i class="fa-solid fa-house"></i>
+              </div>
+              <input type="text" placeholder="airportname" name="airport" />
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="icon-header">
+                <i class="fa-solid fa-plane"></i>
+              </div>
+              <input type="text" placeholder="plane name" name="plane" />
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <div class="card-body">
+              <div class="icon-header">
+                <i class="fa-solid fa-plane-departure"></i>
+              </div>
+              <input type="date" placeholder="depart" name="depart" />
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="icon-header">
+                <i class="fa-solid fa-plane-arrival"></i>
+              </div>
+              <input type="date" placeholder="return" name="return" />
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="icon-header">
+                <i class="fa-solid fa-money-bills"></i>
+              </div>
+              <input type="number" placeholder="price" name="price" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <input name="textName" type="text" id="textName" class="hidden" />
+      <div class="center"><input type="submit" value="Add flight" /></div>
+    </form>
     </div>
+    
   </body>
+  <script src="../Scripts/admin.js"></script>
+  <script src="../Scripts/flights.js"></script>
 </html>

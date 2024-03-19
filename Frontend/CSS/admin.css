@@ -26,21 +26,55 @@ a:hover{
     color: white;
     cursor: pointer;
 }
+input{
+    padding: 10px;
+    font-size: 15px;
+}
+input[type="text"]{
+    border-radius: 0px 15px 15px 0px;
+    border-color: transparent;
+}
+input[type="number"]{
+    border-radius: 0px 15px 15px 0px;
+    border-color: transparent;
+
+}
+input[type="submit"]{
+    background-color: var(--accent);
+    border-radius: 8px;
+    border-color: transparent;
+    color: white;
+}
 ul{
     list-style: none;
-
 }
 li{
     padding-bottom: 10px;
 }
+
 .main{
     margin-left: 25%;
     padding: 20px;
+    width: 100%;
 }
+
+.icon:hover{
+    color: greenyellow;
+    cursor: pointer;
+}
+
 .card{
+    display: flex;
     height: fit-content;
     padding: 10px;
     margin-bottom: 10px;
+}
+.text-header{
+    border-radius: 10px;
+    background-color: var(--main);
+    font-size: 36px;
+    padding: 10px;
+    width: fit-content;
 }
 .card-header{
     border-radius: 10px 0px 0px 10px;
@@ -50,21 +84,98 @@ li{
     padding: 10px;
     width: fit-content;
 }
+.icon-header{
+    border-radius: 10px 0px 0px 10px;
+    background-color: var(--accent);
+    color: white;
+    font-size: 15px;
+    padding: 10px;
+    width: fit-content;
+}
 .card-body{    
     border-radius: 0px 8px 8px 0px;
     background-color: var(--main);
+    display: flex;
     font-size: 26px;
     font-weight: bold;
     padding: 10px;
     width: 100%;
     
 }
+.add{
+    font-size: 50px;
+    border-radius: 5px;
+}
+.add:hover{
+    color: var(--main);
+    cursor: pointer;
+}
+.form{
+    align-self: center;
+    background-color: var(--main);
+    border-radius: 20px;
+    padding: 10px;
+    position: fixed;
 
+}
+.edit-div{
+    padding: -5px;
+    align-content: center;
+}
+.edit-input{
+    padding: 7px;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+.edit-submit{
+    padding: 5px;
+    font-size: 15px;
+    height: fit-content;
+}
+.title{
+    border-radius: 10px 10px 0px 0px;
+    background-color: var(--accent);
+    color: white;
+    font-size: 20px;    
+    padding-left: 20px;
+    padding-right: 10px;
+    margin-bottom: -10px;
+    margin-left: 6%;
+    width: 90%;
+}
+.table-body{
+    border-radius: 0px 0px 8px 0px;
+    background-color: var(--main);
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+    width: 100%;
+}
+.main-bg{
+    background-color: var(--main);
+}
+.accent-bg{
+    background-color: var(--accent);
+}
 .float-container{
     display: flex;
 }
 .space-even{
     justify-content: space-evenly;
+}
+.space-between{
+    justify-content: space-between;
+}
+.gap{
+    gap:5px
+}
+.center{
+    align-items: center;
+    text-align: center;
+    align-items: center;
+    width: 100%;
 }
 .bottom{
     margin-top: 130%;
@@ -72,4 +183,10 @@ li{
 .right{
     text-align: end;
     padding: 10px;
+}
+.hidden{
+    display: none;
+}
+.darken{
+    filter: brightness(70%);
 }
