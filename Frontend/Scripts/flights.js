@@ -10,7 +10,6 @@ async function displayFlights() {
       const result = response.json();
       result
         .then(function (list) {
-          const count = 0;
           for (let i = 0; i < list.length; i++) {
             displayOne(list[i]);
           }
