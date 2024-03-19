@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Mar 19, 2024 at 08:37 AM
+-- Generation Time: Mar 19, 2024 at 02:39 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -68,9 +68,16 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   `flight_id` int(11) NOT NULL,
   `payment` bit(1) NOT NULL,
   PRIMARY KEY (`booking_id`),
-  FOREIGN KEY (`user_id`) REFERENCES users(`user_id`),
-  FOREIGN KEY (`flight_id`) REFERENCES flights(`flight_id`)
+  FOREIGN KEY (`user_id`) REFERENCES  users(`user_id`),
+  FOREIGN KEY (`flight_id`) REFERENCES  fighst(`flight_id`)
 );
+
+--
+-- Dumping data for table `bookings`
+--
+
+INSERT INTO `bookings` (`booking_id`, `user_id`, `flight_id`, `payment`) VALUES
+(1, 1, 1, b'1');
 
 -- --------------------------------------------------------
 
@@ -88,17 +95,18 @@ CREATE TABLE IF NOT EXISTS `flights` (
   `return_date` date NOT NULL,
   `price` int(4) NOT NULL,
   `nb_passengers` int(11) NOT NULL,
+  `img` text NOT NULL,
   PRIMARY KEY (`flight_id`),
-  FOREIGN KEY (`plane_id`) REFERENCES  planes(`plane_id`),
-  FOREIGN KEY (`airport_id`) REFERENCES  airports(`airport_id`)
+  FOREIGN KEY (`plane_id`) REFERENCES   planes(`plane_id`),
+  FOREIGN KEY (`airport_id`) REFERENCES airports(`airport_id`)
 );
 
 --
 -- Dumping data for table `flights`
 --
 
-INSERT INTO `flights` (`flight_id`, `flight_destination`, `airport_id`, `plane_id`, `departure_date`, `return_date`, `price`, `nb_passengers`) VALUES
-(1, 'Chicago', 13, 2, '2024-03-22', '2024-03-28', 200, 350);
+INSERT INTO `flights` (`flight_id`, `flight_destination`, `airport_id`, `plane_id`, `departure_date`, `return_date`, `price`, `nb_passengers`, `img`) VALUES
+(1, 'Chicago', 13, 2, '2024-03-22', '2024-03-28', 200, 350, 'https://images.pexels.com/photos/1823681/pexels-photo-1823681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
 
 -- --------------------------------------------------------
 
@@ -145,8 +153,8 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   `review_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `aproved` bit(1) DEFAULT NULL,
   PRIMARY KEY (`review_id`),
-  FOREIGN KEY (`user_id`) REFERENCES  users(`user_id`),
-  FOREIGN KEY (`flight_id`) REFERENCES  flights(`flight_id`)
+  FOREIGN KEY (`user_id`) REFERENCES users(`user_id`),
+  FOREIGN KEY (`flight_id`) REFERENCES flights(`flight_id`)
 );
 
 -- --------------------------------------------------------
@@ -183,7 +191,17 @@ CREATE TABLE IF NOT EXISTS `wallets` (
   `user_id` int(11) NOT NULL,
   `balance` int(5) NOT NULL,
   PRIMARY KEY (`wallet_id`),
-  FOREIGN KEY (`user_id`) REFERENCES  users(`user_id`)
+  FOREIGN KEY (`user_id`) REFERENCES users(`user_id`)
+);
+
+
+DROP TABLE IF EXISTS `coins`;
+CREATE TABLE IF NOT EXISTS `coins` (
+  `coins_id` int(11) NOT NULL AUTO_INCREMENT,
+  `wallet_id` int(11) NOT NULL,
+  `amount` int(5) NOT NULL,
+  PRIMARY KEY (`coins_id`),
+  FOREIGN KEY (`wallet_id`) REFERENCES wallets(`wallet_id`)
 );
 COMMIT;
 
