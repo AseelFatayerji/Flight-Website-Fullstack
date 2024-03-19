@@ -22,3 +22,15 @@
 .column{
     flex-direction: column;
 }
+
+.space-evenly{
+    justify-content: space-evenly;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
+.hidden{
+    display: none;
+}

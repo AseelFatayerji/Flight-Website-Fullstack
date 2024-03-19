@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/admin.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,66 +13,67 @@
       src="https://kit.fontawesome.com/3466402afb.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="../CSS/colors.css" />
+    <link rel="stylesheet" href="../CSS/utilities.css" />
+    <link rel="stylesheet" href="../CSS/home.css" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-            <ul class="flex end align-center navbar">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">flights</a></li>
-                <li><a href="#">login</a></li>
-            </ul>
-        </nav>
-        <main class="main">
-            <section class="hero flex center">
-                <div class="upcoming flex column justify-center" id="upcoming">
-                    <h1>upcoming flights</h1>
-                </div>
-            </section>
-
-            <section>
-                <div class="flight-cards flex center" id="flight-cards">
-
-                </div>
-                <div class="flex end align-center">
-                    <a href="">more<i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </section>
-
-            <section class="flex center">   
-            <div class="flex center column">
-                <main class="reviews flex column center">
-
-                </main>
-                <div class="flex align-center end">
-                    <a href="">more<i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-            </section>    
-
-            <footer class="footer flex center">
-                <div></div>
-                <ul>
-                    <li>example</li>
-                    <li>example</li>
-                    <li>example</li>
-                </ul>
-                <ul>
-                    <li>example</li>
-                    <li>example</li>
-                    <li>example</li>
-                </ul>
-                <ul>
-                    <li>example</li>
-                    <li>example</li>
-                    <li>example</li>
-                </ul>
-                
-            </footer>
-
-        </main>
-
+      <nav class="nav bg-primary txt-white flex space-between align-center">
+        <div></div>
+        <ul class="navbar bg-txt-white flex space-evenly align-center">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">flights</a></li>
+          <li><a href="#">login</a></li>
+        </ul>
+      </nav>
     </header>
-</body>
+      <main class="main">
+        <section class="hero flex center">
+          <div class="upcoming bg-secondary flex txt-white column justify-center" id="upcoming">
+            <h1>upcoming flights</h1>
+            <div class="upcoming-cards flex center">
+
+            </div>
+          </div>
+        </section>
+          <div class="flight-cards flex center" id="flight-cards"></div>
+          <div class="flex end align-center">
+            <a href="">more<i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </section>
+
+        <section class="flex center">
+          <div class="flex center column">
+            <main class="reviews flex column center"></main>
+            <div class="flex align-center end">
+              <a href="">more<i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </section>
+
+        
+      </main>
+      
+      <footer class="footer flex center">
+          <div></div>
+          <ul>
+            <li>example</li>
+            <li>example</li>
+            <li>example</li>
+          </ul>
+          <ul>
+            <li>example</li>
+            <li>example</li>
+            <li>example</li>
+          </ul>
+          <ul>
+            <li>example</li>
+            <li>example</li>
+            <li>example</li>
+          </ul>
+        </footer>
+    
+  </body>
 </html>
