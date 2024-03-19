@@ -177,6 +177,9 @@ li{
     align-items: center;
     width: 100%;
 }
+.self-center{
+    align-self: center;
+}
 .bottom{
     margin-top: 130%;
 }

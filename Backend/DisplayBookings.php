@@ -6,6 +6,7 @@ $result = mysqli_query($mysqli, $readSql);
 $list = [];
 while ($row = mysqli_fetch_assoc($result)) {
     $item = array(
+        "id" => $row['booking_id'],
         'flight' => $row['flight_id'],
         'des'=>$row['flight_destination'],
         'dep'=>$row['departure_date'],
