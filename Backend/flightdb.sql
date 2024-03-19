@@ -36,6 +36,8 @@ CREATE TABLE IF NOT EXISTS `airports` (
   PRIMARY KEY (`airport_id`)
 );
 
+
+
 --
 -- Dumping data for table `airports`
 --
@@ -55,6 +57,7 @@ INSERT INTO `airports` (`airport_id`, `location`, `airport_name`) VALUES
 (12, 'Mexico City', 'Mexico City International Airp'),
 (13, 'Chicago', 'Midway International Airport');
 
+
 -- --------------------------------------------------------
 
 --
@@ -68,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   `flight_id` int(11) NOT NULL,
   `payment` bit(1) NOT NULL,
   PRIMARY KEY (`booking_id`),
+
   FOREIGN KEY (`user_id`) REFERENCES  users(`user_id`),
   FOREIGN KEY (`flight_id`) REFERENCES  fighst(`flight_id`)
 );
@@ -78,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `bookings` (
 
 INSERT INTO `bookings` (`booking_id`, `user_id`, `flight_id`, `payment`) VALUES
 (1, 1, 1, b'1');
+
 
 -- --------------------------------------------------------
 
@@ -97,6 +102,7 @@ CREATE TABLE IF NOT EXISTS `flights` (
   `nb_passengers` int(11) NOT NULL,
   `img` text NOT NULL,
   PRIMARY KEY (`flight_id`),
+
   FOREIGN KEY (`plane_id`) REFERENCES   planes(`plane_id`),
   FOREIGN KEY (`airport_id`) REFERENCES airports(`airport_id`)
 );
@@ -107,6 +113,7 @@ CREATE TABLE IF NOT EXISTS `flights` (
 
 INSERT INTO `flights` (`flight_id`, `flight_destination`, `airport_id`, `plane_id`, `departure_date`, `return_date`, `price`, `nb_passengers`, `img`) VALUES
 (1, 'Chicago', 13, 2, '2024-03-22', '2024-03-28', 200, 350, 'https://images.pexels.com/photos/1823681/pexels-photo-1823681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+
 
 -- --------------------------------------------------------
 
@@ -121,6 +128,7 @@ CREATE TABLE IF NOT EXISTS `planes` (
   `max_capacity` int(3) NOT NULL DEFAULT '300',
   PRIMARY KEY (`plane_id`)
 );
+
 
 --
 -- Dumping data for table `planes`
@@ -138,6 +146,7 @@ INSERT INTO `planes` (`plane_id`, `plane_name`, `max_capacity`) VALUES
 (9, 'Boeing 747-8', 467),
 (10, 'Airbus A380-800', 853);
 
+
 -- --------------------------------------------------------
 
 --
@@ -153,9 +162,11 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   `review_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `aproved` bit(1) DEFAULT NULL,
   PRIMARY KEY (`review_id`),
+
   FOREIGN KEY (`user_id`) REFERENCES users(`user_id`),
   FOREIGN KEY (`flight_id`) REFERENCES flights(`flight_id`)
 );
+
 
 -- --------------------------------------------------------
 
@@ -191,6 +202,7 @@ CREATE TABLE IF NOT EXISTS `wallets` (
   `user_id` int(11) NOT NULL,
   `balance` int(5) NOT NULL,
   PRIMARY KEY (`wallet_id`),
+
   FOREIGN KEY (`user_id`) REFERENCES users(`user_id`)
 );
 
@@ -203,6 +215,7 @@ CREATE TABLE IF NOT EXISTS `coins` (
   PRIMARY KEY (`coins_id`),
   FOREIGN KEY (`wallet_id`) REFERENCES wallets(`wallet_id`)
 );
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
