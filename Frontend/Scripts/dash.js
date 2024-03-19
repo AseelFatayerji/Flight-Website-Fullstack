@@ -8,6 +8,7 @@ async function displayUsers(){
     const container = document.getElementById("users")
     const users =  await fetch("http://localhost/fullstack/Flight%20Website/Backend/DisplayUsers.php").then(function(response){
         const result = response.json()
+        console.log(response)
         result.then(function(list){
             const h4  = document.createElement("h4")
             h4.innerText = "Total users: "+list.length;
