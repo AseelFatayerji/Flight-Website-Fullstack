@@ -3,7 +3,7 @@ const flightCards = document.getElementById("flight-cards");
 
 const getUpcomingFlights = async () => {
   const response = await fetch(
-    "http://localhost/flight-website-fullstack/backend/getUpcomingFlights.php",
+    "http://localhost:81/flight-website-fullstack/Backend/getAllFlights.php",
     {
       method: "GET",
     }
@@ -32,9 +32,11 @@ const createFlightCard = (flight) => {
     <ul class="flex space-evenly">
       <li>${flight.destination}</li>
       <li>${flight.departure}</li>
-      <li>${flight.arrival}</li>
+      <li>${flight.return}</li>
     </ul>
   </div>`;
+
+  flightCards.appendChild(card);
 };
 
 getUpcomingFlights();
