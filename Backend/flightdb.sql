@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   PRIMARY KEY (`booking_id`),
 
   FOREIGN KEY (`user_id`) REFERENCES  users(`user_id`),
-  FOREIGN KEY (`flight_id`) REFERENCES  fighst(`flight_id`)
+  FOREIGN KEY (`flight_id`) REFERENCES  flights(`flight_id`)
 );
 
 --
