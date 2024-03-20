@@ -119,7 +119,7 @@ header {
   list-style: none;
 }
 
-.filters-div ul li{
+.filters-div ul li {
   width: 33%;
 }
 
@@ -143,4 +143,31 @@ header {
   border-radius: 0 10px 10px 0;
   width: 30%;
   height: 40px;
+}
+
+.flight-card {
+  box-shadow: 0 2px 4px grey;
+  width: 300px;
+  min-width: 20%;
+  max-width: 500px;
+  flex-grow: 1;
+  height: fit-content;
+  border-radius: 10px;
+}
+
+.flight-card img {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px 10px 0 0;
+}
+
+.flight-card p {
+  font-size: 1.4rem;
+  color: black;
+  font-weight: bold;
+}
+
+.flight-card ul {
+  list-style: none;
+  gap: 20px;
 }
