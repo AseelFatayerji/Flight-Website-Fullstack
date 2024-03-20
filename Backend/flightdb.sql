@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Mar 19, 2024 at 02:39 PM
+-- Generation Time: Mar 20, 2024 at 12:36 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `airports` (
   `location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `airport_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`airport_id`)
-);
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `airports`
@@ -68,9 +68,9 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   `flight_id` int(11) NOT NULL,
   `payment` bit(1) NOT NULL,
   PRIMARY KEY (`booking_id`),
-  FOREIGN KEY (`user_id`) REFERENCES  users(`user_id`),
-  FOREIGN KEY (`flight_id`) REFERENCES  flights(`flight_id`)
-);
+  KEY `user_id` (`user_id`),
+  KEY `flight_id` (`flight_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `bookings`
@@ -78,6 +78,21 @@ CREATE TABLE IF NOT EXISTS `bookings` (
 
 INSERT INTO `bookings` (`booking_id`, `user_id`, `flight_id`, `payment`) VALUES
 (1, 1, 1, b'1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `coins`
+--
+
+DROP TABLE IF EXISTS `coins`;
+CREATE TABLE IF NOT EXISTS `coins` (
+  `coins_id` int(11) NOT NULL AUTO_INCREMENT,
+  `wallet_id` int(11) NOT NULL,
+  `amount` int(5) NOT NULL,
+  PRIMARY KEY (`coins_id`),
+  KEY `wallet_id` (`wallet_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -97,16 +112,16 @@ CREATE TABLE IF NOT EXISTS `flights` (
   `nb_passengers` int(11) NOT NULL,
   `img` text NOT NULL,
   PRIMARY KEY (`flight_id`),
-  FOREIGN KEY (`plane_id`) REFERENCES   planes(`plane_id`),
-  FOREIGN KEY (`airport_id`) REFERENCES airports(`airport_id`)
-);
+  KEY `plane_id` (`plane_id`),
+  KEY `airport_id` (`airport_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `flights`
 --
 
 INSERT INTO `flights` (`flight_id`, `flight_destination`, `airport_id`, `plane_id`, `departure_date`, `return_date`, `price`, `nb_passengers`, `img`) VALUES
-(1, 'Chicago', 13, 2, '2024-03-22', '2024-03-28', 200, 350, 'https://images.pexels.com/photos/1823681/pexels-photo-1823681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+(1, 'Hawaii', 13, 2, '2024-03-22', '2024-03-28', 200, 350, 'https://images.pexels.com/photos/1823681/pexels-photo-1823681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
 
 -- --------------------------------------------------------
 
@@ -120,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `planes` (
   `plane_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `max_capacity` int(3) NOT NULL DEFAULT '300',
   PRIMARY KEY (`plane_id`)
-);
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `planes`
@@ -153,9 +168,17 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   `review_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `aproved` bit(1) DEFAULT NULL,
   PRIMARY KEY (`review_id`),
-  FOREIGN KEY (`user_id`) REFERENCES users(`user_id`),
-  FOREIGN KEY (`flight_id`) REFERENCES flights(`flight_id`)
-);
+  KEY `user_id` (`user_id`),
+  KEY `flight_id` (`flight_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`review_id`, `user_id`, `flight_id`, `rating`, `review_text`, `aproved`) VALUES
+(1, 1, 1, 4, 'Greate Flight', b'0'),
+(3, 1, 1, 1, 'BAD', b'0');
 
 -- --------------------------------------------------------
 
@@ -170,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `user_password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`user_id`)
-);
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
@@ -178,6 +201,27 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`) VALUES
 (1, 'Aseel', 'aseel@gmail.com', '$2y$10$hbsdPb8.SPKzOanLPyCXMuarIxXdJObi1E8Qs5dY4poxr5nw4Xt0O');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_roles`
+--
+
+DROP TABLE IF EXISTS `user_roles`;
+CREATE TABLE IF NOT EXISTS `user_roles` (
+  `user_id` int(11) NOT NULL,
+  `role_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `users` (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `user_roles`
+--
+
+INSERT INTO `user_roles` (`user_id`, `role_name`) VALUES
+(1, 'admin');
 
 -- --------------------------------------------------------
 
@@ -191,18 +235,16 @@ CREATE TABLE IF NOT EXISTS `wallets` (
   `user_id` int(11) NOT NULL,
   `balance` int(5) NOT NULL,
   PRIMARY KEY (`wallet_id`),
-  FOREIGN KEY (`user_id`) REFERENCES users(`user_id`)
-);
+  UNIQUE KEY `user_id` (`user_id`),
+  UNIQUE KEY `user_id_2` (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `wallets`
+--
 
-DROP TABLE IF EXISTS `coins`;
-CREATE TABLE IF NOT EXISTS `coins` (
-  `coins_id` int(11) NOT NULL AUTO_INCREMENT,
-  `wallet_id` int(11) NOT NULL,
-  `amount` int(5) NOT NULL,
-  PRIMARY KEY (`coins_id`),
-  FOREIGN KEY (`wallet_id`) REFERENCES wallets(`wallet_id`)
-);
+INSERT INTO `wallets` (`wallet_id`, `user_id`, `balance`) VALUES
+(1, 1, 200);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
