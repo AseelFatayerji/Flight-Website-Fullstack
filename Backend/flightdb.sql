@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `flightdb`
+-- Database: flightdb
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `airports`
+-- Table structure for table airports
 --
 
 DROP TABLE IF EXISTS `airports`;
@@ -36,11 +36,12 @@ CREATE TABLE IF NOT EXISTS `airports` (
   PRIMARY KEY (`airport_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
 --
--- Dumping data for table `airports`
+-- Dumping data for table airports
 --
 
-INSERT INTO `airports` (`airport_id`, `location`, `airport_name`) VALUES
+INSERT INTO airports (airport_id, location, airport_name) VALUES
 (1, 'Adrar', 'Touat-Cheikh Sidi Mohamed Belk'),
 (2, 'Algiers', 'Houari Boumediene Airport'),
 (3, 'Cairo', 'Cairo International Airport'),
@@ -58,8 +59,11 @@ INSERT INTO `airports` (`airport_id`, `location`, `airport_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bookings`
+-- Table structure for table bookings
 --
+
+
+
 
 DROP TABLE IF EXISTS `bookings`;
 CREATE TABLE IF NOT EXISTS `bookings` (
@@ -72,11 +76,12 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   KEY `flight_id` (`flight_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
 --
--- Dumping data for table `bookings`
+-- Dumping data for table bookings
 --
 
-INSERT INTO `bookings` (`booking_id`, `user_id`, `flight_id`, `payment`) VALUES
+INSERT INTO bookings (booking_id, user_id, flight_id, payment) VALUES
 (1, 1, 1, b'1');
 
 -- --------------------------------------------------------
@@ -116,8 +121,9 @@ CREATE TABLE IF NOT EXISTS `flights` (
   KEY `airport_id` (`airport_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
 --
--- Dumping data for table `flights`
+-- Dumping data for table flights
 --
 
 INSERT INTO `flights` (`flight_id`, `flight_destination`, `airport_id`, `plane_id`, `departure_date`, `return_date`, `price`, `nb_passengers`, `img`) VALUES
@@ -126,7 +132,7 @@ INSERT INTO `flights` (`flight_id`, `flight_destination`, `airport_id`, `plane_i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `planes`
+-- Table structure for table planes
 --
 
 DROP TABLE IF EXISTS `planes`;
@@ -137,11 +143,12 @@ CREATE TABLE IF NOT EXISTS `planes` (
   PRIMARY KEY (`plane_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
 --
--- Dumping data for table `planes`
+-- Dumping data for table planes
 --
 
-INSERT INTO `planes` (`plane_id`, `plane_name`, `max_capacity`) VALUES
+INSERT INTO planes (plane_id, plane_name, max_capacity) VALUES
 (1, 'Airbus A350-900 ', 350),
 (2, 'Boeing 747-400', 660),
 (3, 'Airbus A340-500', 325),
@@ -156,7 +163,7 @@ INSERT INTO `planes` (`plane_id`, `plane_name`, `max_capacity`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviews`
+-- Table structure for table reviews
 --
 
 DROP TABLE IF EXISTS `reviews`;
@@ -180,10 +187,11 @@ INSERT INTO `reviews` (`review_id`, `user_id`, `flight_id`, `rating`, `review_te
 (1, 1, 1, 4, 'Greate Flight', b'0'),
 (3, 1, 1, 1, 'BAD', b'0');
 
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table users
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -195,11 +203,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
 --
--- Dumping data for table `users`
+-- Dumping data for table users
 --
 
-INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`) VALUES
+INSERT INTO users (user_id, user_name, user_email, user_password) VALUES
 (1, 'Aseel', 'aseel@gmail.com', '$2y$10$hbsdPb8.SPKzOanLPyCXMuarIxXdJObi1E8Qs5dY4poxr5nw4Xt0O');
 
 -- --------------------------------------------------------
@@ -237,13 +246,13 @@ CREATE TABLE IF NOT EXISTS `wallets` (
   PRIMARY KEY (`wallet_id`),
   UNIQUE KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 --
 -- Dumping data for table `wallets`
 --
 
 INSERT INTO `wallets` (`wallet_id`, `user_id`, `balance`) VALUES
 (1, 1, 200);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

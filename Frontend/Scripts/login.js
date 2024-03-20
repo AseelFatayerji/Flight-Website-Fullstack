@@ -6,7 +6,7 @@ const login = async () => {
 
   try {
     const response = await fetch(
-      "http://localhost/flights/flight-website-fullsatack/backend/login.php",
+      "http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/login.php",
       {
         method: "POST",
         body: formData,
@@ -15,11 +15,11 @@ const login = async () => {
 
     if (response.ok) {
       const data = await response.json();
-      messageDiv.textContent = data.message;
-      window.location.replace("../Pages/profile.html");
+      localStorage.setItem("userId", JSON.stringify(data.user_id));
+      window.location.href = "../Pages/profile.html";
     } else {
-      const errorMessage = await response.text();
-      messageDiv.textContent = `Error: ${errorMessage}`;
+      // const errorMessage = await response.text();
+      messageDiv.textContent = `Error: invalid`;
     }
   } catch (error) {
     console.error("Error:", error);
