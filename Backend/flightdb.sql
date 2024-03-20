@@ -61,15 +61,21 @@ INSERT INTO airports (airport_id, location, airport_name) VALUES
 -- Table structure for table bookings
 --
 
-DROP TABLE IF EXISTS bookings;
-CREATE TABLE IF NOT EXISTS bookings (
-  booking_id int(11) NOT NULL AUTO_INCREMENT,
-  user_id int(11) NOT NULL,
-  flight_id int(11) NOT NULL,
-  payment bit(1) NOT NULL,
-  PRIMARY KEY (booking_id),
-  FOREIGN KEY (user_id) REFERENCES  users(user_id),
-  FOREIGN KEY (flight_id) REFERENCES  flights(flight_id)
+
+
+
+DROP TABLE IF EXISTS `bookings`;
+CREATE TABLE IF NOT EXISTS `bookings` (
+  `booking_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `flight_id` int(11) NOT NULL,
+  `payment` bit(1) NOT NULL,
+  PRIMARY KEY (`booking_id`),
+
+  FOREIGN KEY (`user_id`) REFERENCES  users(`user_id`),
+  FOREIGN KEY (`flight_id`) REFERENCES  flights(`flight_id`)
+
+
 );
 
 --
