@@ -18,11 +18,16 @@ if ($email_exists == 0) {
     $hashed_password = password_hash($user_password, PASSWORD_BCRYPT);
     $query = $mysqli->prepare('insert into users(user_name,user_email,user_password) values(?,?,?);');
     $query->bind_param('sss', $user_name,$user_email,$hashed_password);
+    
     $query->execute();
+    
     $response['status'] = "success";
-    $response['message'] = "user $user_name was created successfully";
+    $response['message'] = "user was created successfully";
+   
 } else {
     $response["status"] = "user already exists";
     $response["message"] = "user $user_name already exist";
 }
+
+
 echo json_encode($response);

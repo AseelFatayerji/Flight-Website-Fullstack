@@ -88,6 +88,7 @@ const editingUser = async () => {
 
 const sendReq = async () => {
   const formData = new FormData(formReq);
+  formData.append("user_id", userId);
 
   try {
     const response = await fetch(
@@ -103,12 +104,7 @@ const sendReq = async () => {
     }
 
     const data = await response.json();
-    if (data.success) {
-      alert("sended successfully");
-      setTimeout(reload, 1000);
-    } else {
-      alert("Failed to send ");
-    }
+    console.log(data);
   } catch (error) {
     console.error("Error:", error.message);
     alert("An error occurred. Please try again later.");
@@ -133,7 +129,7 @@ const displayUserbookings = (data) => {
 
 const getBooking = () => {
   fetch(
-    `http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/userbookings.php?id=1`
+    `http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/userbookings.php?id=${userId}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -151,7 +147,7 @@ const openReq = () => {
 };
 const getBalance = () => {
   fetch(
-    "http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/getBalance.php"
+    `http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/getBalance.php?id=${userId}`
   )
     .then((response) => {
       if (!response.ok) {
@@ -160,7 +156,8 @@ const getBalance = () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      balanceamount.innerHTML = ` <small>Balance: $${data.user.balance}</small>`;
+      console.log(data.user);
     })
     .catch((error) => {
       console.error("Error:", error);

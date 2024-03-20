@@ -3,10 +3,16 @@
 include("connection.php");
 
 $amount = $_POST['req-amount'];
-$wallet = $_POST['wallet_id'];
+$userId = $_POST['user_id'];
+$querye = $mysqli->prepare("SELECT wallet_id FROM wallets WHERE user_id = ?");
+$querye->bind_param('i', $userId);
+$querye->execute();
+$querye->store_result();
+$querye->bind_result($wallet);
+$querye -> fetch();
 
-$query = $mysqli->prepare('INSERT INTO coins (amount,wallet_id) VALUES(?,?);');
-    $query->bind_param('ss', $amount, $wallet);
+$query = $mysqli->prepare('INSERT INTO coins (wallet_id,amount) VALUES(?,?);');
+    $query->bind_param('ii',$wallet,$amount);
     $query->execute();
     $response['status'] = "success";
     $response['message'] = "request sent successfully";
