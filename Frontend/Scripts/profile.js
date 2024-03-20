@@ -15,19 +15,14 @@ const formReq = document.getElementById("form-req");
 const userId = JSON.parse(localStorage.getItem("userId"));
 const histories = document.getElementById("histories");
 
-let wallet_ID = Math.floor(Math.random() * 20);
-
 const fetchUserProfile = (userId) => {
   fetch(
     `http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/profile.php?id=${userId}`
   )
     .then((response) => response.json())
     .then((data) => {
-      if (data.status === "success") {
-        displayUserProfile(data.user);
-      } else {
-        alert(data.message);
-      }
+      console.log(data);
+      displayUserProfile(data.user);
     })
     .catch((error) => {
       console.error("Error:", error);

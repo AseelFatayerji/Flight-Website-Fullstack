@@ -15,10 +15,14 @@ const login = async () => {
 
     if (response.ok) {
       const data = await response.json();
+      console.log(data);
       localStorage.setItem("userId", JSON.stringify(data.user_id));
-      window.location.href = "../Pages/profile.html";
+      if (data.is_admin == 1) {
+        window.location.href = "../Pages/AdminDash.html";
+      } else {
+        window.location.href = "../Pages/profile.html";
+      }
     } else {
-      // const errorMessage = await response.text();
       messageDiv.textContent = `Error: invalid`;
     }
   } catch (error) {
