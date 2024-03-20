@@ -42,7 +42,7 @@ async function calculateRevenue(){
             for(let i = 0;i < list.length;i++){
                 count += parseInt(list[i].price);
             }
-            container.innerText = "Revenue: "+count;
+            container.innerText = "Revenue: "+count+"$";
         }).catch(function (err) {
         console.log(err);
       });
