@@ -60,7 +60,9 @@ const createFlightCard = (flight) => {
         <li>${flight.return}</li>
       </ul>
     </div>`;
-
+    card.addEventListener("click",()=>{
+        window.location.href=`../Pages/flight.html?id=${flight.id}`;
+    })
   display_flights.appendChild(card);
 };
 
