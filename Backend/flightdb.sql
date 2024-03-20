@@ -63,6 +63,7 @@ INSERT INTO airports (airport_id, location, airport_name) VALUES
 
 
 
+
 DROP TABLE IF EXISTS `bookings`;
 CREATE TABLE IF NOT EXISTS `bookings` (
   `booking_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -73,6 +74,7 @@ CREATE TABLE IF NOT EXISTS `bookings` (
 
   FOREIGN KEY (`user_id`) REFERENCES  users(`user_id`),
   FOREIGN KEY (`flight_id`) REFERENCES  flights(`flight_id`)
+
 
 );
 
