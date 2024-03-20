@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.nav {
+  width: 100%;
+  height: 70px;
+  padding-left: 10px;
+}
+
+.navbar {
+  width: 50%;
+  height: 100%;
+}
+
+.navbar li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  height: 100%;
+  list-style: none;
+}
+
+.navbar a {
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  font-size: 1.6rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar a:hover {
+  background-color: #0d3e66;
+}
+
+.footer {
+  height: 300px;
+  width: 100%;
+}
+
+.footer div {
+  width: 25%;
+}
+
+.footer ul {
+  width: 25%;
+  list-style: none;
+}
+
+.footer ul li {
+  padding: 20px;
+  font-size: 1.6rem;
+  color: white;
+}
+
+.footer ul li:hover {
+  background-color: #0d3e66;
+  cursor: pointer;
+}
+
+.hero {
+  width: 100%;
+  height: 400px;
+  background-image: url("../assets/Screenshot\ 2024-03-20\ 205645.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.filters-container {
+  width: 70%;
+  border-radius: 10px;
+  padding: 20px;
+  height: fit-content;
+  gap: 20px;
+  box-shadow: 0 2px 4px grey;
+}
+
+.filters-container > div {
+  width: 100%;
+}
+
+.filter-btn {
+  width: 25%;
+  border-radius: 10px;
+  height: 40px;
+}
+
+.filters-container > div > form {
+  width: 70%;
+}
+
+.filters-container > div > form > input {
+  width: 70%;
+  height: 40px;
+  text-align: center;
+  border-radius: 10px 0 0 10px;
+}
+
+.filters-div ul {
+  width: 100%;
+  gap: 20px;
+  list-style: none;
+}
+
+.filters-div ul li{
+  width: 33%;
+}
+
+.filters-div ul li input {
+  text-align: center;
+  width: 100%;
+  border-radius: 10px;
+  list-style: none;
+}
+
+.display-flights {
+  width: 100%;
+  padding: 30px;
+  gap: 20px;
+  flex-wrap: wrap;
+  height: fit-content;
+}
+
+.search-btn {
+  float: right;
+  border-radius: 0 10px 10px 0;
+  width: 30%;
+  height: 40px;
+}
