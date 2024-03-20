@@ -12,7 +12,7 @@ const signUp = async () => {
   const formData = new FormData(signupForm);
   try {
     const response = await fetch(
-      "http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/signup.php",
+      "http://localhost/fullstack/Flight%20Website/Backend/signup.php",
       {
         method: "POST",
         body: formData,

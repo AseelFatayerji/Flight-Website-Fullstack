@@ -16,6 +16,10 @@ html {
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  background-image: url("../assets/sign-bg.jpeg");
+  background-repeat: no-repeat;
+}
 ::selection {
   background-color: var(--main-color);
   color: var(--bg-white);
@@ -64,29 +68,16 @@ p {
   color: var(--bg-white);
 }
 .all {
-  display: flex;
-  justify-content: space-around;
+  height: 100%;
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 33%, rgba(254,254,254,1) 70%);
 }
-.left {
-  width: 50%;
 
-  height: 100vh;
-}
-.left .image {
-  width: 100%;
-  height: 100%;
-  border-top-right-radius: 100px;
-  border-bottom-right-radius: 100px;
-}
-.left .image img {
-  width: 100%;
-  height: 100%;
-  border-top-right-radius: 100px;
-  border-bottom-right-radius: 100px;
-}
 .right {
-  background-color: var(--bg-white);
-  width: 60%;
+  width: 100%;
+  height: 100%;
+  padding: 10% 0px 17.5% 30%;
+
 }
 .form {
   padding: 20px;
@@ -95,44 +86,41 @@ p {
   transform: translateX(100px);
   width: 300px;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3);
+  background-color: var(--bg-white);
+  border: 3px solid var(--main-color);
+  text-align: center;
 }
-.form h1,
-.form-login h1 {
+.form h1 {
   text-align: center;
   color: var(--main-color);
   margin-bottom: 10px;
 }
-.form form label,
-.form-login form label {
+.form form label {
   display: block;
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 3px;
   margin-top: 10px;
 }
-.form .input,
-.form-login .input {
+.form .input {
   background-color: white;
   height: 40px;
   width: 100%;
   border: 1px solid grey;
   border-radius: 6px;
 }
-.form .input .icon,
-.form-login .input .icon {
+.form .input .icon {
   padding: 3px 10px;
   background-color: var(--main-color);
 }
-.form .input input,
-.form-login .input input {
+.form .input input {
   background-color: transparent;
   padding: 5px;
   border: none;
   outline: none;
   width: 100%;
 }
-.form .btn-signup,
-.btn-login {
+.form .btn-signup {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -173,7 +161,4 @@ p {
   color: blue;
   text-decoration: underline;
   cursor: pointer;
-}
-.error-message {
-  color: red;
 }

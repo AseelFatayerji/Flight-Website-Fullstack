@@ -4,7 +4,7 @@ const reviews = document.getElementById("reviews");
 
 const getAllFlights = async () => {
   const response = await fetch(
-    "http://localhost:81/flight-website-fullstack/Backend/getAllFlights.php",
+    "http://localhost/fullstack/Flight%20Website/Backend/getAllFlights.php",
     {
       method: "GET",
     }

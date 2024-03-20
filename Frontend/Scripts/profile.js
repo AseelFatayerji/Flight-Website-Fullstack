@@ -17,7 +17,7 @@ const histories = document.getElementById("histories");
 
 const fetchUserProfile = (userId) => {
   fetch(
-    `http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/profile.php?id=${userId}`
+    `http://localhost/fullstack/Flight%20Website/Backend/profile.php?id=${userId}`
   )
     .then((response) => response.json())
     .then((data) => {
