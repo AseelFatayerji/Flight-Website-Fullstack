@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `flightdb`
+-- Database: flightdb
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `airports`
+-- Table structure for table airports
 --
 
 DROP TABLE IF EXISTS `airports`;
@@ -36,11 +36,12 @@ CREATE TABLE IF NOT EXISTS `airports` (
   PRIMARY KEY (`airport_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
 --
--- Dumping data for table `airports`
+-- Dumping data for table airports
 --
 
-INSERT INTO `airports` (`airport_id`, `location`, `airport_name`) VALUES
+INSERT INTO airports (airport_id, location, airport_name) VALUES
 (1, 'Adrar', 'Touat-Cheikh Sidi Mohamed Belk'),
 (2, 'Algiers', 'Houari Boumediene Airport'),
 (3, 'Cairo', 'Cairo International Airport'),
@@ -58,75 +59,75 @@ INSERT INTO `airports` (`airport_id`, `location`, `airport_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bookings`
+-- Table structure for table bookings
 --
 
-DROP TABLE IF EXISTS `bookings`;
-CREATE TABLE IF NOT EXISTS `bookings` (
-  `booking_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `flight_id` int(11) NOT NULL,
-  `payment` bit(1) NOT NULL,
-  PRIMARY KEY (`booking_id`),
-  KEY `user_id` (`user_id`),
-  KEY `flight_id` (`flight_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS bookings;
+CREATE TABLE IF NOT EXISTS bookings (
+  booking_id int(11) NOT NULL AUTO_INCREMENT,
+  user_id int(11) NOT NULL,
+  flight_id int(11) NOT NULL,
+  payment bit(1) NOT NULL,
+  PRIMARY KEY (booking_id),
+  KEY user_id (user_id),
+  KEY flight_id (flight_id)
+) ;
 
 --
--- Dumping data for table `bookings`
+-- Dumping data for table bookings
 --
 
-INSERT INTO `bookings` (`booking_id`, `user_id`, `flight_id`, `payment`) VALUES
+INSERT INTO bookings (booking_id, user_id, flight_id, payment) VALUES
 (1, 1, 1, b'1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `coins`
+-- Table structure for table coins
 --
 
-DROP TABLE IF EXISTS `coins`;
-CREATE TABLE IF NOT EXISTS `coins` (
-  `coins_id` int(11) NOT NULL AUTO_INCREMENT,
-  `wallet_id` int(11) NOT NULL,
-  `amount` int(5) NOT NULL,
-  PRIMARY KEY (`coins_id`),
-  KEY `wallet_id` (`wallet_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS coins;
+CREATE TABLE IF NOT EXISTS coins (
+  coins_id int(11) NOT NULL AUTO_INCREMENT,
+  wallet_id int(11) NOT NULL,
+  amount int(5) NOT NULL,
+  PRIMARY KEY (coins_id),
+  KEY wallet_id (wallet_id)
+) ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `flights`
+-- Table structure for table flights
 --
 
-DROP TABLE IF EXISTS `flights`;
-CREATE TABLE IF NOT EXISTS `flights` (
-  `flight_id` int(11) NOT NULL AUTO_INCREMENT,
-  `flight_destination` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `airport_id` int(11) NOT NULL,
-  `plane_id` int(11) NOT NULL,
-  `departure_date` date NOT NULL,
-  `return_date` date NOT NULL,
-  `price` int(4) NOT NULL,
-  `nb_passengers` int(11) NOT NULL,
-  `img` text NOT NULL,
-  PRIMARY KEY (`flight_id`),
-  KEY `plane_id` (`plane_id`),
-  KEY `airport_id` (`airport_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS flights;
+CREATE TABLE IF NOT EXISTS flights (
+  flight_id int(11) NOT NULL AUTO_INCREMENT,
+  flight_destination varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  airport_id int(11) NOT NULL,
+  plane_id int(11) NOT NULL,
+  departure_date date NOT NULL,
+  return_date date NOT NULL,
+  price int(4) NOT NULL,
+  nb_passengers int(11) NOT NULL,
+  img text NOT NULL,
+  PRIMARY KEY (flight_id),
+  KEY plane_id (plane_id),
+  KEY airport_id (airport_id)
+) ;
 
 --
--- Dumping data for table `flights`
+-- Dumping data for table flights
 --
 
-INSERT INTO `flights` (`flight_id`, `flight_destination`, `airport_id`, `plane_id`, `departure_date`, `return_date`, `price`, `nb_passengers`, `img`) VALUES
+INSERT INTO flights (flight_id, flight_destination, airport_id, plane_id, departure_date, return_date, price, nb_passengers, img) VALUES
 (1, 'Hawaii', 13, 2, '2024-03-22', '2024-03-28', 200, 350, 'https://images.pexels.com/photos/1823681/pexels-photo-1823681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `planes`
+-- Table structure for table planes
 --
 
 DROP TABLE IF EXISTS `planes`;
@@ -137,11 +138,12 @@ CREATE TABLE IF NOT EXISTS `planes` (
   PRIMARY KEY (`plane_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
 --
--- Dumping data for table `planes`
+-- Dumping data for table planes
 --
 
-INSERT INTO `planes` (`plane_id`, `plane_name`, `max_capacity`) VALUES
+INSERT INTO planes (plane_id, plane_name, max_capacity) VALUES
 (1, 'Airbus A350-900 ', 350),
 (2, 'Boeing 747-400', 660),
 (3, 'Airbus A340-500', 325),
@@ -156,34 +158,34 @@ INSERT INTO `planes` (`plane_id`, `plane_name`, `max_capacity`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviews`
+-- Table structure for table reviews
 --
 
-DROP TABLE IF EXISTS `reviews`;
-CREATE TABLE IF NOT EXISTS `reviews` (
-  `review_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `flight_id` int(11) NOT NULL,
-  `rating` int(1) NOT NULL,
-  `review_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `aproved` bit(1) DEFAULT NULL,
-  PRIMARY KEY (`review_id`),
-  KEY `user_id` (`user_id`),
-  KEY `flight_id` (`flight_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS reviews;
+CREATE TABLE IF NOT EXISTS reviews (
+  review_id int(11) NOT NULL AUTO_INCREMENT,
+  user_id int(11) NOT NULL,
+  flight_id int(11) NOT NULL,
+  rating int(1) NOT NULL,
+  review_text text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  aproved bit(1) DEFAULT NULL,
+  PRIMARY KEY (review_id),
+  KEY user_id (user_id),
+  KEY flight_id (flight_id)
+) ;
 
 --
--- Dumping data for table `reviews`
+-- Dumping data for table reviews
 --
 
-INSERT INTO `reviews` (`review_id`, `user_id`, `flight_id`, `rating`, `review_text`, `aproved`) VALUES
+INSERT INTO reviews (review_id, user_id, flight_id, rating, review_text, aproved) VALUES
 (1, 1, 1, 4, 'Greate Flight', b'0'),
 (3, 1, 1, 1, 'BAD', b'0');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table users
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -197,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table users
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`, `is_admin`) VALUES
@@ -206,7 +208,7 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`, `is_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wallets`
+-- Table structure for table wallets
 --
 
 DROP TABLE IF EXISTS `wallets`;
@@ -220,10 +222,10 @@ CREATE TABLE IF NOT EXISTS `wallets` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `wallets`
+-- Dumping data for table wallets
 --
 
-INSERT INTO `wallets` (`wallet_id`, `user_id`, `balance`) VALUES
+INSERT INTO wallets (wallet_id, user_id, balance) VALUES
 (1, 1, 200);
 COMMIT;
 

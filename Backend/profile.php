@@ -1,26 +1,25 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-include('connection.php');
+
+include 'connection.php';
+
+$id = $_GET["id"];
+
+$query = $mysqli->prepare("SELECT * FROM users WHERE user_id = ?");
+$query->bind_param('i', $id);
+$query->execute();
+$query->store_result();
+$query->bind_result($id, $user_name, $user_email, $user_password,$is_admin);
+$query->fetch();
 
 
+$response['status'] = "success";
+$response['user'] = array(
+    'user_id' => $id,
+    'user_name' => $user_name,
+    'user_email' => $user_email,
+    'user_password' => $user_password
 
-$userID = $_GET['id'];
-$query = "SELECT * FROM users WHERE user_id = ?";
-$profile = $mysqli->prepare($query);
+);
 
-if ($profile) {
-    $profile->bind_param("i", $userID);
-    $profile->execute();
-    $result = $profile->get_result();
-    
-    if ($result->num_rows == 1) {
-        $user = $result->fetch_assoc();
-        echo json_encode(["status" => "success", "user" => $user]);
-    } else {
-        echo json_encode(["status" => "error", "message" => "User not found"]);
-    }
-    $stmt->close();
-} else {
-    echo json_encode(["status" => "error", "message" => "Error preparing statement"]);
-}
-?>
+echo json_encode($response);
