@@ -253,6 +253,7 @@ h1:hover {
   background-color: var(--main-color);
   padding: 10px;
   font-weight: bold;
+  font-size: 20px;
   border: none;
   outline: none;
   margin-bottom: 10px;
@@ -294,6 +295,10 @@ h1:hover {
   outline: none;
   background-color: transparent;
   padding: 5px;
+}
+.balance {
+  font-weight: bold;
+  font-size: 30px;
 }
 .request form button {
   border-radius: 6px;
