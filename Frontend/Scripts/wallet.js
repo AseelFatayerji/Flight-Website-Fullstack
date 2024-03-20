@@ -61,6 +61,7 @@ function createForm(list) {
   const name = document.createElement("input");
   const id = document.createElement("input");
   const wallet = document.createElement("input");
+  const amount = document.createElement("input");
 
   form.className = "float-container space-even gap";
   form.method = "post";
@@ -83,12 +84,17 @@ function createForm(list) {
 
   id.name = "id";
   id.type = "number";
-  id.value = list.id;
+  id.value = parseInt(list.id);
   id.className = "hidden";
+
+  amount.name = "amount";
+  amount.type = "number";
+  amount.value = parseInt(list.amount);
+  amount.className = "hidden";
 
   wallet.name = "wallet";
   wallet.type = "number";
-  wallet.value = list.wallet;
+  wallet.value = parseInt(list.wallet);
   wallet.className = "hidden";
 
   form.appendChild(acc);
@@ -96,6 +102,7 @@ function createForm(list) {
   form.appendChild(name);
   form.appendChild(id);
   form.appendChild(wallet);
+  form.appendChild(amount);
 
   return form;
 }

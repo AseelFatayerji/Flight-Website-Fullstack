@@ -86,7 +86,7 @@ function createForm(list) {
 
   id.name = "id";
   id.type = "number";
-  id.value = list.id;
+  id.value = parseInt(list.id);
   id.className = "hidden";
 
   form.appendChild(acc);
