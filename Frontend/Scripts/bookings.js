@@ -14,7 +14,7 @@ async function displayBooking() {
           const title = document.createElement("div");
           title.className = "float-container gap space-even title";
           title.innerHTML =
-            "<div>Destination</div><div>Departure Date</div><div>Return Date</div><div>User Name</div><div>User Email</div><div>Payment Status</div>";
+            "<div>Destination</div><div>Departure Date</div><div>Return Date</div><div>User Name</div><div>User Email</div><div>Payment Status</div><div>Action</div>";
           container.appendChild(title);
           for (let i = 0; i < list.length; i++) {
             displayOne(list[i]);
@@ -33,20 +33,39 @@ function displayOne(booking) {
   const card = document.createElement("div");
   const card_header = document.createElement("div");
   const card_body = document.createElement("div");
-  const formdiv = document.createElement("div");
+  const actions = document.createElement("div");
   const icon = document.createElement("i");
+  const trash = document.createElement("i");
+  const edit = document.createElement("i")
 
-  icon.className = "fa-solid fa-book";
   const user = createListItem(booking.user, "use", booking.id);
   const email = createListItem(booking.email, "email", booking.id);
   const des = createListItem(booking.des, "des", booking.id);
   const ret = createListItem(booking.ret, "ret", booking.id);
   const dep = createListItem(booking.dep, "dep", booking.id);
   const pay = createListItem(booking.payment, "pay", booking.id);
+  const form = createForm(booking);
+
+  form.action = "../../Backend/EditBooking.php";
+  form.method = "post";
+  form.className = "form self-center{ hidden"
 
   card.className = "card";
   card_body.className = "table-body space-even ";
   card_header.className = "card-header accent-bg";
+  icon.className = "fa-solid fa-book";
+  trash.className = "fa-solid fa-trash trash";
+  trash.onclick = () => {
+    form.action = "../../Backend/DeleteBooking.php"
+    form.submit()
+  };
+  edit.className = "fa-regular fa-pen-to-square icon";
+  edit.onclick = () => {
+    showPop(booking.id);
+  };
+    
+  actions.appendChild(trash);
+  actions.appendChild(edit);
 
   card_body.appendChild(des);
   card_body.appendChild(dep);
@@ -54,11 +73,15 @@ function displayOne(booking) {
   card_body.appendChild(user);
   card_body.appendChild(email);
   card_body.appendChild(pay);
-  card_body.appendChild(formdiv);
+  card_body.appendChild(actions);
+
   card_header.appendChild(icon);
+
   card.appendChild(card_header);
   card.appendChild(card_body);
+
   container.appendChild(card);
+  container.appendChild(form);
 }
 
 function createListItem(item, type) {
@@ -81,22 +104,80 @@ function createListItem(item, type) {
     return li;
   }
 }
+function createForm(list) {
+  const form = document.createElement("form");
+  const ul = document.createElement("ul");
+  const des = createInput(list, "des");
+  const ret = createInput(list, "ret");
+  const dep = createInput(list, "dep");
+  const name = document.createElement("input");
+  const booking = document.createElement("input");
 
-function setFormaction(type) {
-  const icon = document.createElement("i");
+  name.name = "name"
+  booking.name = "booking"
+
+  name.type = "text"
+  booking.type = "text"
+
+  name.value = localStorage.getItem("name")
+  booking.value = list.id
+
+  name.className = "hidden"
+  booking.className = "hidden"
+
+  form.id = "editbooking"+list.id;
+
+  ul.appendChild(dep);
+  ul.appendChild(des);
+  ul.appendChild(ret);
+
+  form.appendChild(ul);
+  form.appendChild(name);
+  form.appendChild(booking);
+  return form;
+}
+function createInput(list, type) {
+  const li = document.createElement("li");
+  const input = document.createElement("input");
+  const icon = setIcon(type);
+
+  input.type = "text";
+  input.name = type;
+  input.placeholder = "unchanged";
+
+  li.className="float-container";
   if (type == "des") {
-    return "../../Backend/EditDes.php";
-  } else if (type == "ret") {
-    return "../../Backend/EditRet.php";
+    input.value = list.des;
+    li.appendChild(icon);
+    li.appendChild(input);
+    return li;
   } else if (type == "dep") {
-    return "../../Backend/EditDep.php";
-  } else if (type == "pl") {
-    return "../../Backend/EditPlane.php";
+    input.value = list.dep;
+    li.appendChild(icon);
+    li.appendChild(input);
+    return li;
+  } else if (type == "ret") {
+    input.value = list.ret;
+    li.appendChild(icon);
+    li.appendChild(input);
+    return li;
   }
 }
-function showPop() {
-  document.getElementById("addFlight").classList.remove("hidden");
+function setIcon(type) {
+  const icon = document.createElement("i");
+  if (type == "des") {
+    icon.className = "fa-solid fa-map-location-dot icon-header";
+    return icon;
+  } else if (type == "ret") {
+    icon.className = "fa-solid fa-plane-arrival icon-header";
+    return icon;
+  } else if (type == "dep") {
+    icon.className = "fa-solid fa-plane-departure icon-header";
+
+    return icon;
+  }
 }
-function showEditPop(i, type) {
-  document.getElementById(i + "show" + type).classList.remove("hidden");
+
+function showPop(i) {
+  document.getElementById("editbooking"+i).classList.remove("hidden");
 }
