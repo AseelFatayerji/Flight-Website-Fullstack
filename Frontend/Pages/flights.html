@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../CSS/flights.css" />
+    <link rel="stylesheet" href="../CSS/utilities.css" />
+    <link rel="stylesheet" href="../CSS/colors.css" />
+    <script
+      src="https://kit.fontawesome.com/3466402afb.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <nav class="nav bg-primary txt-white flex space-between align-center">
+        <div></div>
+        <ul class="navbar bg-txt-white flex space-evenly align-center">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">flights</a></li>
+          <li><a href="#">login</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero flex center">
+        <div class="flex filters-container column center bg-secondary">
+          <div class="flex space-between align-center">
+            <button class="filter-btn bg-primary txt-white" id="filter-btn">
+              <i class="fa-solid fa-filter"></i>filter
+            </button>
+
+            <form action="">
+              <input
+                class="search-input"
+                type="search"
+                placeholder="search"
+                id="search-input"
+              />
+              <button
+                class="search-btn flex center txt-white bg-primary"
+                id="search-btn"
+              >
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+          </div>
+          <div class="filters-div flex center hiden">
+            <ul class="flex filters-list align-center space-between">
+              <li>
+                <input
+                  type="text"
+                  placeholder="passengers less than"
+                  id="passengers-less-than"
+                />
+              </li>
+              <li>
+                <input
+                  type="text"
+                  placeholder="departure after"
+                  id="departure-after"
+                />
+              </li>
+              <li>
+                <input
+                  type="text"
+                  placeholder="return before"
+                  id="return-before"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section
+        class="display-flights flex center bg-white"
+        id="display-flights"
+      >
+      
+    </section>
+    </main>
+
+    <footer class="footer bg-primary txt-white flex center">
+      <div></div>
+      <ul>
+        <li>example</li>
+        <li>example</li>
+        <li>example</li>
+      </ul>
+      <ul>
+        <li>example</li>
+        <li>example</li>
+        <li>example</li>
+      </ul>
+      <ul>
+        <li>example</li>
+        <li>example</li>
+        <li>example</li>
+      </ul>
+    </footer>
+  </body>
+</html>

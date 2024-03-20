@@ -230,7 +230,12 @@ header {
 }
 
 .footer ul li {
-  margin-top: 20px;
+  padding: 20px;
   font-size: 1.6rem;
   color: white;
+}
+
+.footer ul li:hover {
+  background-color: #0d3e66;
+  cursor: pointer;
 }
