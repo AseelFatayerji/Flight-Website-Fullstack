@@ -14,13 +14,19 @@
     <title>User Profile</title>
   </head>
   <body>
+    <header>
+      <nav class="nav bg-primary txt-white flex space-between align-center">
+        <div></div>
+        <ul class="navbar bg-txt-white flex space-evenly align-center">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">flights</a></li>
+          <li><a href="#">login</a></li>
+        </ul>
+      </nav>
+    </header>
     <div class="overlay" id="overlay"></div>
     <section class="profile flex">
-      <div class="left">
-        <div class="image">
-          <img src="../assets/pngtree-d-illustration-of-a-commercial-aircraft-soaring-through-a-clear-blue-picture-image_5591740.jpg" alt="">
-        </div>
-        </div>
+     
       </div>
       <div class="right">
         <h1>User Profile</h1>
@@ -54,10 +60,12 @@
           </div>
         </div>
         <div class="coins">
-          <button class="btn-request" id="btn-request">Request <i class="fa-solid fa-chevron-down icon" id="icon"></i></button>
-          <div class="request" id="request">
+          <div class="balance flex-between"><button class="btn-request" id="btn-request">Request Coins <i class="fa-solid fa-chevron-down icon" id="icon"></i></button>
+             <span  class="balance" id="balance"></span></div>
+          <div class="request closed-req" id="request">
             <form id="form-req">
-              <input type="text" name="req-amount" placeholder="Enter Your requested amount">
+              <input type="number" id="req-amount" name="req-amount" placeholder="Enter Your requested amount">
+              <input type="number" id="wallet_id" name="wallet_id" placeholder="Enter Your wallet number">
               <button type="submit" id="send-amount" class="send">Send</button>
             </form>
           </div>
@@ -66,7 +74,7 @@
         <div class="booking-his">
           <h1>Your Bokings History</h1>
           <ul class="histories flex column" id="histories">
-            <li class="his">
+            <!-- <li class="his">
               <ul class="flex column his">
                 <li class="destination flex-between">Destination: <span>ahmad</span></li>
                 <li class="Departure flex-between">Departure date:<span>ahmad</span></li>
@@ -89,7 +97,7 @@
                 <li class="Arrival flex-between">Arrival date:<span>ahmad</span></li>
                 <li class="Price flex-between">Price:<span>ahmad</span></li>
               </ul>
-            </li>
+            </li> -->
           </ul>
         </div>
         

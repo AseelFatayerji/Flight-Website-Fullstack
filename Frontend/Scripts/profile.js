@@ -4,13 +4,16 @@ const editForm = document.getElementById("editForm");
 const edit = document.getElementById("edit");
 const btnReq = document.getElementById("btn-request");
 const request = document.getElementById("request");
+const balanceamount = document.getElementById("balance");
+const reqAmount = document.getElementById("req-amount");
 const info = document.getElementById("info");
 const closing = document.getElementById("close");
-const sendAmont = document.getElementById("send-amount");
+const sendAmount = document.getElementById("send-amount");
 const icon = document.getElementById("icon");
 const overlay = document.getElementById("overlay");
 const formReq = document.getElementById("form-req");
 const userId = JSON.parse(localStorage.getItem("userId"));
+const histories = document.getElementById("histories");
 
 let wallet_ID = Math.floor(Math.random() * 20);
 
@@ -87,10 +90,10 @@ const editingUser = async () => {
     alert("An error occurred. Please try again later.");
   }
 };
-// formData.append("wallet_id", wallet_ID);
+
 const sendReq = async () => {
   const formData = new FormData(formReq);
-  formData.append("wallet_id", wallet_ID);
+
   try {
     const response = await fetch(
       "http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/requestCoins.php",
@@ -116,10 +119,58 @@ const sendReq = async () => {
     alert("An error occurred. Please try again later.");
   }
 };
+const displayUserbookings = (data) => {
+  console.log(data);
+
+  const { flight_destination, departure_date, return_date, price } = data;
+  histories.innerHTML +=
+    ` <li class="his">
+  <ul class="flex column his">
+    <li class="destination flex-between">Destination: <span>` +
+    flight_destination +
+    `</span></li>
+    <li class="Departure flex-between">Departure date:<span>${departure_date}</span></li>
+    <li class="Arrival flex-between">Arrival date:<span>${return_date}</span></li>
+    <li class="Price flex-between">Price:<span>${price}</span></li>
+  </ul>
+</li>`;
+};
+
+const getBooking = () => {
+  fetch(
+    `http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/userbookings.php?id=1`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      data.map((book) => {
+        displayUserbookings(book);
+      });
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
 
 const openReq = () => {
-  request.style.display = "block";
-  icon.style.transform = "rotate(180)";
+  request.classList.toggle("closed-req");
+};
+const getBalance = () => {
+  fetch(
+    "http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/getBalance.php"
+  )
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Failed to fetch user data. Please try again later.");
+    });
 };
 
 btnReq.addEventListener("click", openReq);
@@ -129,8 +180,10 @@ editForm.addEventListener("submit", (e) => {
 });
 closing.addEventListener("click", closeBox);
 edit.addEventListener("click", openBox);
-sendAmont.addEventListener("click", (e) => {
+sendAmount.addEventListener("click", (e) => {
   e.preventDefault();
   sendReq();
 });
 fetchUserProfile(userId);
+getBalance();
+getBooking();
