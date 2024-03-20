@@ -235,8 +235,7 @@ CREATE TABLE IF NOT EXISTS `wallets` (
   `user_id` int(11) NOT NULL,
   `balance` int(5) NOT NULL,
   PRIMARY KEY (`wallet_id`),
-  UNIQUE KEY `user_id` (`user_id`),
-  UNIQUE KEY `user_id_2` (`user_id`)
+  UNIQUE KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
