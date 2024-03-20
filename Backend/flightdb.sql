@@ -4,6 +4,7 @@
 --
 -- Host: 127.0.0.1:3308
 -- Generation Time: Mar 20, 2024 at 12:36 PM
+-- Generation Time: Mar 20, 2024 at 12:36 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -28,13 +29,14 @@ SET time_zone = "+00:00";
 -- Table structure for table airports
 --
 
-DROP TABLE IF EXISTS airports;
-CREATE TABLE IF NOT EXISTS airports (
-  airport_id int(11) NOT NULL AUTO_INCREMENT,
-  location varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  airport_name varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (airport_id)
-);
+DROP TABLE IF EXISTS `airports`;
+CREATE TABLE IF NOT EXISTS `airports` (
+  `airport_id` int(11) NOT NULL AUTO_INCREMENT,
+  `location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `airport_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`airport_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 --
 -- Dumping data for table airports
@@ -129,13 +131,14 @@ INSERT INTO flights (flight_id, flight_destination, airport_id, plane_id, depart
 -- Table structure for table planes
 --
 
-DROP TABLE IF EXISTS planes;
-CREATE TABLE IF NOT EXISTS planes (
-  plane_id int(11) NOT NULL AUTO_INCREMENT,
-  plane_name varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  max_capacity int(3) NOT NULL DEFAULT '300',
-  PRIMARY KEY (plane_id)
-);
+DROP TABLE IF EXISTS `planes`;
+CREATE TABLE IF NOT EXISTS `planes` (
+  `plane_id` int(11) NOT NULL AUTO_INCREMENT,
+  `plane_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `max_capacity` int(3) NOT NULL DEFAULT '300',
+  PRIMARY KEY (`plane_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 --
 -- Dumping data for table planes

@@ -48,9 +48,9 @@ function displayOne(booking) {
 
   form.action = "../../Backend/EditBooking.php";
   form.method = "post";
-  form.className = "form self-center{ hidden"
+  form.className = "form self-center hidden"
 
-  card.className = "card";
+  card.className = "row";
   card_body.className = "table-body space-even ";
   card_header.className = "card-header accent-bg";
   icon.className = "fa-solid fa-book";
@@ -63,7 +63,8 @@ function displayOne(booking) {
   edit.onclick = () => {
     showPop(booking.id);
   };
-    
+  
+  actions.className ="float-container space-end gap"
   actions.appendChild(trash);
   actions.appendChild(edit);
 
@@ -112,28 +113,32 @@ function createForm(list) {
   const dep = createInput(list, "dep");
   const name = document.createElement("input");
   const booking = document.createElement("input");
+  const submit = document.createElement("input");
 
   name.name = "name"
   booking.name = "booking"
 
   name.type = "text"
   booking.type = "text"
+  submit.type ="submit"
 
   name.value = localStorage.getItem("name")
   booking.value = list.id
+  submit.value ="Update"
 
   name.className = "hidden"
   booking.className = "hidden"
 
   form.id = "editbooking"+list.id;
 
-  ul.appendChild(dep);
   ul.appendChild(des);
+  ul.appendChild(dep);
   ul.appendChild(ret);
 
   form.appendChild(ul);
   form.appendChild(name);
   form.appendChild(booking);
+  form.appendChild(submit)
   return form;
 }
 function createInput(list, type) {
