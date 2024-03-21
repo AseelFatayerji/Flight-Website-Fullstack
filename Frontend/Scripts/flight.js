@@ -30,7 +30,7 @@ const user_id = localStorage.getItem("userId");
 
 const getFlight = async () => {
   const response = await fetch(
-    `http://localhost:81/flight-website-fullstack/Backend/getFlight.php?id=${flight_id}`,
+    `http://localhost/fullstack/Flight%20Website/Backend/getFlight.php?id=${flight_id}`,
     {
       method: "GET",
     }

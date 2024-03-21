@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
     <link rel="stylesheet" href="../CSS/signup.css" />
+    <link rel="stylesheet" href="../CSS/footer.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -14,6 +15,35 @@
     />
   </head>
   <body>
+    <header>
+      <nav class="nav bg-secondary flex end txt-white">
+        <ul class="navbar bg-txt-white flex">
+          <li>
+            <a id="index.html" onclick="Redirect(this)"
+              ><i class="fa-solid fa-house"></i>Home</a
+            >
+          </li>
+          <li>
+            <a id="Pages/flights.html" onclick="Redirect(this)"
+              ><i class="fa-solid fa-plane"></i>Flights</a
+            >
+          </li>
+          <li id="login">
+            <a id="Pages/login.html" onclick="Redirect(this)">Login</a>
+          </li>
+          <li class="hidden" id="profile">
+            <a id="Pages/profile.html" onclick="Redirect(this)"
+              ><i class="fa-solid fa-user hidden" id="profile"></i
+            ></a>
+          </li>
+          <li class="hidden" id="logout">
+            <a id="index.html" onclick="logout(this)"
+              ><i class="fa-solid fa-right-from-bracket hidden" id="logout"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <div class="all">
       <div class="right flex-center">
         <div class="form" id="form">
@@ -72,6 +102,80 @@
         </div>
       </div>
     </div>
+    <footer>
+      <div class="container">
+        <div class="footer_content">
+          <div class="first_section">
+            <h3 class="footer_headings">About Us</h3>
+            <img src="images/logo-1.png" alt="" />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. A
+              adipisci minus ratione nulla cum ut repellendus omnis, odit
+              ducimus nisi?
+            </p>
+            <div class="social_icons">
+              <i class="fa-brands fa-facebook"></i>
+              <i class="fa-brands fa-twitter"></i>
+              <i class="fa-brands fa-pinterest"></i>
+              <i class="fa-brands fa-youtube"></i>
+            </div>
+          </div>
+          <div class="second_section">
+            <h3 class="footer_headings">Useful links</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Projects</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="third_section">
+            <h3 class="footer_headings">Address</h3>
+            <ul>
+              <li>
+                <i class="fa fa-envelope"></i>
+                <span>admin@onlineittuts.com</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <span>A108 Adam Street, New York, NY </span>
+              </li>
+
+              <li>
+                <i class="fa-solid fa-phone"></i>
+                <span>+15589 55488 55</span>
+              </li>
+            </ul>
+          </div>
+          <div class="fourth_section">
+            <h3 class="footer_headings">Contact Us</h3>
+            <form action="#">
+              <div class="form_control">
+                <input type="text" placeholder="Enter an Email" />
+              </div>
+              <div class="form_control">
+                <textarea
+                  name=""
+                  id=""
+                  cols="10"
+                  rows="5"
+                  placeholder="Write Message....."
+                ></textarea>
+              </div>
+              <button type="button">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="footer_txt">
+        <p>
+          All rights reservered by
+          <a href="https://www.onlineittuts.com">OnlineITtuts</a> &copy; 2023.
+        </p>
+      </div>
+    </footer>
+    <script src="../Scripts/redirect.js"></script>
     <script src="../Scripts/signup.js"></script>
   </body>
 </html>

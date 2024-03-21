@@ -2,12 +2,6 @@ const upcomingFlights = document.getElementById("upcoming-cards");
 const flightCards = document.getElementById("flight-cards");
 const reviews = document.getElementById("reviews");
 
-window.onload = () =>{
-  if(localStorage.getItem("userId") == null){
-    return
-  }
-  hideLogin()
-}
 const getAllFlights = async () => {
   const response = await fetch(
     "http://localhost/fullstack/Flight%20Website/Backend/getAllFlights.php",
@@ -106,35 +100,7 @@ const createGoodReviewCard = (review) => {
 
   reviews.appendChild(card);
 };
-function Redirect(item) {
-  let name = localStorage.getItem("userId");
-  if(name != null){
-  let url =
-    "http://localhost/fullstack/Flight%20Website/Frontend/" +
-    item.id +
-    "?user=" +
-    name;
-  window.location.href = url;
-  }
-  else{
-    let url =
-    "http://localhost/fullstack/Flight%20Website/Frontend/" +
-    item.id;
-  window.location.href = url;
-  }
-}
-function logout(item) {
-  let url =
-    "http://localhost/fullstack/Flight%20Website/Frontend/pages/" + item.id;
-  localStorage.clear();
-  sessionStorage.clear();
-  window.location.href = url;
-}
-function hideLogin(){
-  document.getElementById("login").classList.add("hidden");
-  document.getElementById("logout").classList.remove("hidden");
-  document.getElementById("profile").classList.remove("hidden");
-}
+
 getUpcomingFlights();
 getAllFlights();
 getGoodReviews();

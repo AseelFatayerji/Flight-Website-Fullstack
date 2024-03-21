@@ -10,7 +10,7 @@ const filters_div = document.getElementById("filters-div");
 
 const getFlights = async () => {
   const response = await fetch(
-    "http://localhost:81/flight-website-fullstack/Backend/getAllFlights.php",
+    "http://localhost/fullstack/Flight%20Website/Backend/getAllFlights.php",
     {
       method: "GET",
     }
@@ -89,7 +89,6 @@ const byDestination = (flight) => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   display_flights.innerHTML = "";
-  getFlights();
 });
 
 search_btn.addEventListener("click", () => {
