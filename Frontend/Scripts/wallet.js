@@ -74,8 +74,11 @@ function createForm(list) {
     form.submit();
   };
   rej.onclick = () => {
-    form.action = "../../Backend/DeleteRequest.php";
-    form.submit();
+    localStorage.setItem("rejwallet", 1);
+    setTimeout(() => {
+      form.action = "../../Backend/DeleteRequest.php";
+      form.submit();
+    }, "1000");
   };
   name.name = "textname";
   name.type = "text";

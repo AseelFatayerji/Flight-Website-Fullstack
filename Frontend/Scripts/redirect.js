@@ -29,7 +29,7 @@ function Redirect(item) {
     window.location.href = url;
   }
   function hideLogin(){
-    document.getElementById("login").classList.add("hidden");
+    document.getElementById("login").className = "hidden";
     document.getElementById("logout").classList.remove("hidden");
     document.getElementById("profile").classList.remove("hidden");
   }

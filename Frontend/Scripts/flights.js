@@ -32,10 +32,12 @@ function displayOne(flight) {
   const trash = document.createElement("i");
   edit.className = "fa-regular fa-pen-to-square icon";
   edit.onclick = () => {
+    localStorage.setItem("editflight",1)
     showEditPop(flight.id);
   };
   trash.className = "fa-solid fa-trash trash";
   trash.onclick = () => {
+    localStorage.setItem("editflight",1)
     form.action = "../../Backend/DeleteFlight.php"
     form.submit()
   };
