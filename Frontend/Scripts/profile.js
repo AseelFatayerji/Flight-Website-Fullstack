@@ -44,15 +44,15 @@ const reload = () => {
 const displayUserProfile = (data) => {
   const { id, user_name, user_email } = data;
   info.innerHTML = `    <li class="flex">
-  <span class="label">Full-Name: </span>
+  <span class="label"><i class="fa-solid fa-user"></i> </span>
   <span class="detail">${user_name}</span>
 </li>
 <li>
-  <span class="label">Email: </span>
+  <span class="label"><i class="fa-solid fa-envelope"></i> </span>
   <span class="detail">${user_email}</span>
 </li>
 <li>
-  <span class="label">Password:</span>
+  <span class="label"><i class="fa-solid fa-lock"></i></span>
   <span class="detail">Secured password</span>
 </li>`;
 };
