@@ -18,6 +18,7 @@ html {
 }
 body {
   position: relative;
+  font-family: sans-serif;
 }
 
 .t-center {
@@ -66,10 +67,7 @@ a {
   height: 100vh;
   background-color: var(--bg-white);
 }
-h1:hover {
-  background-color: var(--main-color);
-  color: white;
-}
+
 .image {
   width: 100%;
   height: 100%;
@@ -81,23 +79,36 @@ h1:hover {
 }
 .right {
   padding-top: 2rem;
+  padding: 2rem;
   width: 100%;
   background-color: #dedede;
+  height: 100vh;
 }
-.right > h1 {
+.user-info {
+  width: 50%;
+}
+.right .about h1 {
   text-align: center;
   font-size: 36px;
   font-weight: bold;
-  margin-bottom: 2rem;
-  border: 2px solid var(--main-color);
+  background-color: var(--bg-white);
+
   padding: 10px;
-  width: 300px;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+
   margin-right: auto;
   margin-left: auto;
+  /* background-color: var(--main-color); */
 }
 .right .about {
   padding: 20px;
-  width: 70%;
+  width: 100%;
   background-color: white;
   margin-right: auto;
   margin-left: auto;
@@ -150,6 +161,10 @@ h1:hover {
   background-color: var(--main-color);
   z-index: 100;
   display: none;
+  border-radius: 6px;
+}
+.edit-box button {
+  border-radius: 6px;
 }
 .open {
   display: block;
@@ -209,8 +224,7 @@ h1:hover {
   cursor: pointer;
 }
 .booking-his {
-  padding: 2rem;
-  width: 100%;
+  width: 60%;
 }
 .booking-his h1 {
   text-align: center;
@@ -219,13 +233,13 @@ h1:hover {
   margin-bottom: 2rem;
   border: 2px solid var(--main-color);
   padding: 10px;
-  width: 400px;
+  width: 1000px;
   margin-right: auto;
   margin-left: auto;
 }
 
 .histories {
-  width: 70%;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
   gap: 20px;
@@ -243,10 +257,14 @@ h1:hover {
   font-weight: bold;
 }
 .coins {
-  width: 70%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1rem;
+}
+.booking-his h1 {
+  width: 60%;
+  border-radius: 6px;
 }
 .btn-request {
   border-radius: 6px;
@@ -265,8 +283,13 @@ h1:hover {
   border: 2px solid var(--main-color);
   border-radius: 6px;
 
+  width: 40%;
   transition: 1s;
   background-color: white;
+}
+.send {
+  font-weight: bold;
+  font-size: 20px;
 }
 .rotate {
   transform: rotate(180);
@@ -347,4 +370,36 @@ header {
 
 .navbar a:hover {
   background-color: #0d3e66;
+}
+
+@media (max-width: 767px) {
+  .right {
+    flex-direction: column;
+  }
+  .user-info {
+    width: 100%;
+  }
+  .btn-request {
+    width: 50%;
+    font-size: 15px;
+  }
+  .coins .request {
+    width: 100%;
+  }
+  .request form {
+    width: 100%;
+  }
+  .booking-his {
+    width: 100%;
+  }
+  .booking-his h1 {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .histories {
+    width: 100%;
+  }
+  .booking-his h1 {
+    font-size: 20px;
+  }
 }
