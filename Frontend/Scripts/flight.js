@@ -30,14 +30,13 @@ const user_id = localStorage.getItem("userId");
 
 const getFlight = async () => {
   const response = await fetch(
-    `http://localhost/fullstack/Flight%20Website/Backend/getFlight.php?id=${flight_id}`,
+    `http://localhost/fullstack/Flight%20Website/Backend/getFlight.php?flight=${flight_id}`,
     {
       method: "GET",
     }
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       flight_img.src = data.flight.image;
       destination.innerHTML += " " + data.flight.destination;
       departure_date.innerText += " " + data.flight.departure;
@@ -55,7 +54,7 @@ const bookFlight = async () => {
   form_data.append("flight_id", flight_id);
   form_data.append("user_id", user_id);
   const response = await fetch(
-    `http://localhost:81/flight-website-fullstack/Backend/addBooking.php`,
+    `http://localhost/fullstack/Flight%20Website/Backend/addBooking.php`,
     {
       method: "POST",
       body: form_data
@@ -64,7 +63,6 @@ const bookFlight = async () => {
     
 
   ); const data = await response.json();
-    console.log(data);
    }catch(error){ console.log(error); }
 };
 
@@ -76,7 +74,7 @@ const addReview = async () => {
   form_data.append("rating", rating);
   form_data.append("review", review.value);
   const response = await fetch(
-    `http://localhost:81/flight-website-fullstack/Backend/addReview.php`,
+    `http://localhost/fullstack/Flight%20Website/Backend/addReview.php`,
     {
       method: "POST",
       body: form_data,
