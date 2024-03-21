@@ -2,7 +2,7 @@
 
 include 'connection.php';
 
-$id = $_GET['id'];
+$id = $_GET['flight'];
 
 $query = $mysqli->prepare("SELECT * FROM flights WHERE flight_id = ?");
 $query->bind_param('i', $id);

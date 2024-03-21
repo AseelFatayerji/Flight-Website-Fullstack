@@ -53,7 +53,7 @@ header {
 }
 
 .booking {
-  width: 70%;
+  width: fit-content;
   height: fit-content;
   border-radius: 10px;
   padding: 20px;
@@ -72,11 +72,20 @@ header {
   height: 40px;
   border-radius: 5px;
 }
-
+.info-section{
+  width: 100%;
+  padding: 20px;
+}
 .review {
+  margin-top: 10px;
   padding: 20px;
   gap: 20px;
-  width:70%;
-  height: 300px;
+  width:fit-content;
+  height: fit-content;
   border-radius: 10px;
+  text-align: center;
+}
+.logo{
+  height: 100px;
+  width: 70px;
 }

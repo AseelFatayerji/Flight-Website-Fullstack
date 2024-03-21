@@ -53,7 +53,6 @@ const createFlightCard = (flight) => {
       alt=""
     />
     <div class="flex center column">
-      <p>${flight.id}</p>
       <ul class="flex space-evenly">
         <li>${flight.destination}</li>
         <li>${flight.departure}</li>
@@ -61,7 +60,7 @@ const createFlightCard = (flight) => {
       </ul>
     </div>`;
     card.addEventListener("click",()=>{
-        window.location.href=`../Pages/flight.html?id=${flight.id}`;
+        window.location.href=`../Pages/flight.html?flight=${flight.id}`;
     })
   display_flights.appendChild(card);
 };
