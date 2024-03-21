@@ -1,20 +1,21 @@
 <?php
 
 include("connection.php");
-$sql = "SELECT user_id, balance FROM wallets";
-$result = $mysqli->query($sql);
-if ($result) {
-    $data = array();
-    while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
-    }
+$id=$_GET['id'];
 
-    $mysqli->close();
-
-    header('Content-Type: application/json');
-    echo json_encode($data);
-} else {
+$query = $mysqli->prepare("SELECT * FROM wallets WHERE user_id = ?");
+$query->bind_param('i', $id);
+$query->execute();
+$query->store_result();
+$query->bind_result($walletid,$id, $balance);
+$query->fetch();
+$response['status'] = "success";
+$response['user'] = array(
+    'user_id' => $id,
+    'wallet_id' => $walletid,
+    'balance' => $balance
     
-    echo "Error: " . $mysqli->error;
-}
-?>
+
+);
+
+echo json_encode($response);

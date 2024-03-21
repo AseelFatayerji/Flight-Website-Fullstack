@@ -4,14 +4,13 @@ const reviews = document.getElementById("reviews");
 
 const getAllFlights = async () => {
   const response = await fetch(
-    "http://localhost:81/flight-website-fullstack/Backend/getAllFlights.php",
+    "http://localhost/fullstack/Flight%20Website/Backend/getAllFlights.php",
     {
       method: "GET",
     }
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       data.forEach((element) => {
         createFlightCard(element);
       });
@@ -23,14 +22,13 @@ const getAllFlights = async () => {
 
 const getUpcomingFlights = async () => {
   const response = await fetch(
-    "http://localhost:81/flight-website-fullstack/Backend/getUpcomingFlights.php",
+    "http://localhost/fullstack/Flight%20Website/Backend/getUpcomingFlights.php",
     {
       method: "GET",
     }
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       data.forEach((element) => {
         createUpcomingFlightCard(element);
       });
@@ -42,14 +40,13 @@ const getUpcomingFlights = async () => {
 
 const getGoodReviews = async () => {
   const response = await fetch(
-    "http://localhost:81/flight-website-fullstack/Backend/getGoodReviews.php",
+    "http://localhost/fullstack/Flight%20Website/Backend/getGoodReviews.php",
     {
       method: "GET",
     }
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       data.forEach((element) => {
         createGoodReviewCard(element);
       });
@@ -67,7 +64,6 @@ const createFlightCard = (flight) => {
     alt=""
   />
   <div class="flex center column">
-    <p>${flight.id}</p>
     <ul class="flex space-evenly">
       <li>${flight.destination}</li>
       <li>${flight.departure}</li>
@@ -80,17 +76,11 @@ const createFlightCard = (flight) => {
 
 const createUpcomingFlightCard = (flight) => {
   const card = document.createElement("div");
-  card.classList.add("flight-card", "txt-white", "bg-secondary");
-  card.innerHTML = `<img
-    src="${flight.image}"
-    alt=""
-  />
+  card.classList.add("flight-card2", "txt-white", "bg-secondary");
+  card.innerHTML = `
   <div class="flex center column">
-    <p>${flight.id}</p>
     <ul class="flex space-evenly">
       <li>${flight.destination}</li>
-      <li>${flight.departure}</li>
-      <li>${flight.return}</li>
     </ul>
   </div>`;
 

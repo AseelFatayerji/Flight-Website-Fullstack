@@ -13,11 +13,11 @@ $result = mysqli_query($mysqli, $readSql);
 
 $flight;
 while ($row = mysqli_fetch_assoc($result)) {
-    $flight = $row['flight_id'];    
+    $flight = $row['flight_id'];
 }
 
 $query = $mysqli->prepare('UPDATE flights SET departure_date = ?,return_date=?,flight_destination=?  WHERE flight_id = ?;');
-$query->bind_param('sssi',$dep ,$ret ,$des, $flight);
+$query->bind_param('sssi', $dep, $ret, $des, $flight);
 $query->execute();
 $response['status'] = "success";
 
