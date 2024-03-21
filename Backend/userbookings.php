@@ -2,7 +2,7 @@
 include("connection.php");
 
 
-$user_id = 1;
+$user_id = $_GET['id'];
 
 $sql = "SELECT *
         FROM flights 

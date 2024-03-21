@@ -26,59 +26,64 @@
     </header>
     <div class="overlay" id="overlay"></div>
     <section class="profile flex">
-     
-      </div>
-      <div class="right">
-        <h1>User Profile</h1>
-        <div class="about shadow">
-          <ul class="info flex column" id="info">
-           
-          </ul>
-          <button class="edit flex-center" id="edit">
-            <i class="fa-solid fa-plus"></i>
-          </button>
-          <div class="edit-box" id="editBox">
-            <div class="top"><span class="close" id="close">x</span></div>
-            <form id="editForm" class="editForm flex column">
-              <input
-                type="text"
-                name="user_name"
-                id="user_name"
-                placeholder="Enter your name... "
-                required
-              />
-              <input
-                type="email"
-                name="user_email"
-                id="user_email"
-                placeholder="Enter your email... "
-                required
-              />
-              
-              <button type="submit" id="editUser">Edit</button>
-            </form>
+      <div class="right flex">
+        <div class="user-info">
+          <div class="about shadow">
+            <h1>User Profile</h1>
+            <ul class="info flex column" id="info"></ul>
+            <button class="edit flex-center" id="edit">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <div class="edit-box" id="editBox">
+              <div class="top"><span class="close" id="close">x</span></div>
+              <form id="editForm" class="editForm flex column">
+                <input
+                  type="text"
+                  name="user_name"
+                  id="user_name"
+                  placeholder="Enter your name... "
+                  required
+                />
+                <input
+                  type="email"
+                  name="user_email"
+                  id="user_email"
+                  placeholder="Enter your email... "
+                  required
+                />
+
+                <button type="submit" id="editUser">Edit</button>
+              </form>
+            </div>
+          </div>
+          <div class="coins">
+            <div class="balance flex-between">
+              <button class="btn-request" id="btn-request">
+                Request Coins
+                <i class="fa-solid fa-chevron-down icon" id="icon"></i>
+              </button>
+              <span class="balance" id="balance"></span>
+            </div>
+            <div class="request closed-req" id="request">
+              <form id="form-req">
+                <input
+                  type="number"
+                  id="req-amount"
+                  name="req-amount"
+                  placeholder="Enter Your requested amount"
+                />
+                <button type="submit" id="send-amount" class="send">
+                  Send
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-        <div class="coins">
-          <div class="balance flex-between"><button class="btn-request" id="btn-request">Request Coins <i class="fa-solid fa-chevron-down icon" id="icon"></i></button>
-             <span  class="balance" id="balance"></span></div>
-          <div class="request closed-req" id="request">
-            <form id="form-req">
-              <input type="number" id="req-amount" name="req-amount" placeholder="Enter Your requested amount">
-              <input type="number" id="wallet_id" name="wallet_id" placeholder="Enter Your wallet number">
-              <button type="submit" id="send-amount" class="send">Send</button>
-            </form>
-          </div>
-         </div>
-        
+
         <div class="booking-his">
-          <h1>Your Bokings History</h1>
-          <ul class="histories flex column" id="histories">
-           
-          </ul>
+          <h1>Your Bookings History</h1>
+          <ul class="histories flex column" id="histories"></ul>
         </div>
-        
-       
       </div>
     </section>
 
