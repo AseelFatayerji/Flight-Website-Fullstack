@@ -89,7 +89,7 @@ const byDestination = (flight) => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   display_flights.innerHTML = "";
-  getFlights();
+  
 });
 
 search_btn.addEventListener("click", () => {
