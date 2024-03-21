@@ -1,7 +1,7 @@
 <?php
 
 include("connection.php");
-$id=1;
+$id=$_GET['id'];
 
 $query = $mysqli->prepare("SELECT * FROM wallets WHERE user_id = ?");
 $query->bind_param('i', $id);

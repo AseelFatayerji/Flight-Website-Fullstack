@@ -17,11 +17,11 @@ const histories = document.getElementById("histories");
 
 const fetchUserProfile = (userId) => {
   fetch(
-    `http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/profile.php?id=${userId}`
+    `http://localhost/fullstack/Flight%20Website/Backend/profile.php?id=${userId}`
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      
       displayUserProfile(data.user);
     })
     .catch((error) => {
@@ -58,11 +58,10 @@ const displayUserProfile = (data) => {
 };
 const editingUser = async () => {
   const formData = new FormData(editForm);
-  formData.append("user_id", userId);
-
+  formData.append("user_id", userId);  
   try {
     const response = await fetch(
-      "http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/editinguserinfo.php",
+      "http://localhost/fullstack/Flight%20Website/Backend/editinguserinfo.php",
       {
         method: "POST",
         body: formData,
@@ -92,7 +91,7 @@ const sendReq = async () => {
 
   try {
     const response = await fetch(
-      "http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/requestCoins.php",
+      "http://localhost/fullstack/Flight%20Website/Backend/requestCoins.php",
       {
         method: "POST",
         body: formData,
@@ -104,14 +103,13 @@ const sendReq = async () => {
     }
 
     const data = await response.json();
-    console.log(data);
+    
   } catch (error) {
     console.error("Error:", error.message);
     alert("An error occurred. Please try again later.");
   }
 };
-const displayUserbookings = (data) => {
-  console.log(data);
+const displayUserbookings = (data) => {  
 
   const { flight_destination, departure_date, return_date, price } = data;
   histories.innerHTML +=
@@ -129,7 +127,7 @@ const displayUserbookings = (data) => {
 
 const getBooking = () => {
   fetch(
-    `http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/userbookings.php?id=${userId}`
+    `http://localhost/fullstack/Flight%20Website/Backend/userbookings.php?id=${userId}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -147,7 +145,7 @@ const openReq = () => {
 };
 const getBalance = () => {
   fetch(
-    `http://localhost/flight/flight-website-fullstack/flight-website-fullstack/backend/getBalance.php?id=${userId}`
+    `http://localhost/fullstack/Flight%20Website/Backend/getBalance.php?id=${userId}`
   )
     .then((response) => {
       if (!response.ok) {

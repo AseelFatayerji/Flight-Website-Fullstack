@@ -3,8 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Mar 20, 2024 at 12:36 PM
--- Generation Time: Mar 20, 2024 at 12:36 PM
+-- Generation Time: Mar 20, 2024 at 07:30 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -189,42 +188,22 @@ INSERT INTO reviews (review_id, user_id, flight_id, rating, review_text, aproved
 -- Table structure for table users
 --
 
-DROP TABLE IF EXISTS users;
-CREATE TABLE IF NOT EXISTS users (
-  user_id int(11) NOT NULL AUTO_INCREMENT,
-  user_name varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  user_email varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  user_password varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (user_id)
-) ;
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `user_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `user_password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `is_admin` bit(1) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table users
 --
 
-INSERT INTO users (user_id, user_name, user_email, user_password) VALUES
-(1, 'Aseel', 'aseel@gmail.com', '$2y$10$hbsdPb8.SPKzOanLPyCXMuarIxXdJObi1E8Qs5dY4poxr5nw4Xt0O');
-
--- --------------------------------------------------------
-
---
--- Table structure for table user_roles
---
-
-DROP TABLE IF EXISTS user_roles;
-CREATE TABLE IF NOT EXISTS user_roles (
-  user_id int(11) NOT NULL,
-  role_name varchar(100) NOT NULL,
-  PRIMARY KEY (user_id),
-  UNIQUE KEY users (user_id)
-) ;
-
---
--- Dumping data for table user_roles
---
-
-INSERT INTO user_roles (user_id, role_name) VALUES
-(1, 'admin');
+INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`, `is_admin`) VALUES
+(1, 'Aseel', 'aseel@gmail.com', '$2y$10$hbsdPb8.SPKzOanLPyCXMuarIxXdJObi1E8Qs5dY4poxr5nw4Xt0O', b'1');
 
 -- --------------------------------------------------------
 
@@ -232,14 +211,15 @@ INSERT INTO user_roles (user_id, role_name) VALUES
 -- Table structure for table wallets
 --
 
-DROP TABLE IF EXISTS wallets;
-CREATE TABLE IF NOT EXISTS wallets (
-  wallet_id int(11) NOT NULL AUTO_INCREMENT,
-  user_id int(11) NOT NULL,
-  balance int(5) NOT NULL,
-  PRIMARY KEY (wallet_id),
-  UNIQUE KEY user_id (user_id)
-);
+DROP TABLE IF EXISTS `wallets`;
+CREATE TABLE IF NOT EXISTS `wallets` (
+  `wallet_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `balance` int(5) NOT NULL,
+  PRIMARY KEY (`wallet_id`),
+  UNIQUE KEY `user_id` (`user_id`),
+  UNIQUE KEY `user_id_2` (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table wallets
