@@ -186,13 +186,13 @@ function checkAlerts(){
   const book =parseInt(localStorage.getItem("editbooking"))
   const wall =parseInt(localStorage.getItem("rejwallet"))
   if(rev == 1){
-      createAlerts("review","reject")
+      createAlerts("review","rejected")
   }
   if(flight == 1){
       createAlerts("flight","changed")
   }
   if(wall == 1){
-      createAlerts("wallet","rejected")
+      createAlerts("wallet request","rejected")
   }
   if(book == 1){
       createAlerts("booking","changed")
@@ -223,7 +223,7 @@ input.onclick = ()=>{
   if(type == "review"){
       localStorage.setItem("rejRev",0)
   }
-  if(type == "wallet"){
+  if(type == "wallet request"){
       localStorage.setItem("rejwallet",0)
   }
 }
