@@ -162,3 +162,42 @@ p {
   text-decoration: underline;
   cursor: pointer;
 }
+.nav {
+  width: 100%;
+  height: fit-content;
+  background-color: white;
+}
+
+.navbar {
+  width: 50%;
+  height: 100%;
+  text-align: end;
+  padding: 0px;
+}
+
+.navbar li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  height: 100%;
+  list-style: none;
+}
+
+.navbar a {
+  width: fit-content;
+  height: 100%;
+  color: inherit;
+  font-size: 1.6rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  padding:5px;
+  border-radius:5px;  
+}
+
+.navbar a:hover {
+  background-color:#2196f3; ;
+  cursor: pointer;
+}

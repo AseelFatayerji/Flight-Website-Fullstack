@@ -13,7 +13,7 @@ $query->fetch();
 
 
 $response['status'] = "success";
-$response['flight'] = array(
+$response['flights'] = array(
     'id' => $flight_id,
     'destination' => $destination,
     'airport' => $airport,
