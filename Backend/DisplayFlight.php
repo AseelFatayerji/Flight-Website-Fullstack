@@ -14,6 +14,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         'return' => $row['return_date'],
         'price' => $row['price'],
         'capacity' => $row['nb_passengers'],
+        'image' => $row['img']
     );
     $list[] = $item;    
 }

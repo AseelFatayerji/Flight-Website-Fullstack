@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 :root{
     --main:darkgray;
     --accent:rgb(37, 37, 37);
 }
 *{
     margin: 0%;
+    font-family: "poppins", sans-serif;
     
 }
 nav{
@@ -70,7 +73,6 @@ li{
     display: flex;
     height: fit-content;
     padding: 10px;
-    margin-bottom: -30px;
 }
 .text-header{
     border-radius: 10px;
@@ -108,10 +110,12 @@ li{
 .form{
     text-align: center;
     background-color: var(--main);
+    border : 2px solid var(--accent);
     border-radius: 20px;
     padding: 10px;
     position: fixed;
-
+    top:10%;
+    left:40%;
 }
 .icon:hover{
     color: greenyellow;
@@ -157,6 +161,15 @@ li{
     margin-bottom: -10px;
     margin-left: 6%;
     width: 90%;
+}
+.table-header{
+    border-radius: 10px 0px 0px 10px;
+    background-color: var(--accent);
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+    width: fit-content;
 }
 .table-body{
     border-radius: 0px 0px 8px 0px;

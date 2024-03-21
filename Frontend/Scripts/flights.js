@@ -27,30 +27,29 @@ function displayOne(flight) {
   const card = document.createElement("div");
   const card_header = document.createElement("div");
   const card_body = document.createElement("div");
-  const formdiv = document.createElement("div");
-  const label = document.createElement("label");
   const ul = document.createElement("ul");
-
-  label.innerText = flight.id;
+  const edit = document.createElement("i");
+  const trash = document.createElement("i");
+  edit.className = "fa-regular fa-pen-to-square icon";
+  edit.onclick = () => {
+    showEditPop(flight.id);
+  };
+  trash.className = "fa-solid fa-trash trash";
+  trash.onclick = () => {
+    form.action = "../../Backend/DeleteFlight.php"
+    form.submit()
+  };
 
   const des = createListItem(flight.des, "des", flight.id);
   const ret = createListItem(flight.return, "ret", flight.id);
   const dep = createListItem(flight.depart, "dep", flight.id);
   const plane = createListItem(flight.plane, "pl", flight.id);
-  const desform = createEditForm(flight.id, "des");
-  const retform = createEditForm(flight.id, "ret");
-  const depform = createEditForm(flight.id, "dep");
-  const planeform = createEditForm(flight.id, "pl");
 
-  desform.method = "post";
-  retform.method = "post";
-  depform.method = "post";
-  planeform.method = "post";
+  const form = createForm(flight)
 
-  formdiv.appendChild(desform);
-  formdiv.appendChild(depform);
-  formdiv.appendChild(retform);
-  formdiv.appendChild(planeform);
+  form.method = "post";
+  form.action = "../../Backend/EditFlight.php"
+  form.className = "form hidden"
 
   ul.appendChild(des);
   ul.appendChild(dep);
@@ -59,74 +58,109 @@ function displayOne(flight) {
 
   card.className = "row";
   card_body.className = "table-body ";
-  card_header.className = "card-header accent-bg";
+  card_header.className = "table-header float-container gap accent-bg";
 
   card_body.appendChild(ul);
-  card_body.appendChild(formdiv);
-  card_header.appendChild(label);
+  card_header.appendChild(edit);
+  card_header.appendChild(trash);
   card.appendChild(card_header);
   card.appendChild(card_body);
   container.appendChild(card);
+  container.appendChild(form)
 }
 function createListItem(item, type, i) {
   const li = document.createElement("li");
-  const edit = document.createElement("i");
+  
   const icon = setIcon(type);
   const text = document.createElement("h4");
+  
   li.className = "float-container gap space-between";
-  edit.className = "fa-regular fa-pen-to-square icon";
-  edit.onclick = () => {
-    showEditPop(i, type);
-  };
-
+  
   text.innerText = item;
   li.appendChild(icon);
   li.appendChild(text);
-  li.appendChild(edit);
 
   return li;
 }
-function createEditForm(i, type) {
+function createForm(list) {
   const form = document.createElement("form");
-  const div = document.createElement("div");
-  const id = document.createElement("input");
+  const ul = document.createElement("ul");
+  const des = createInput(list, "des");
+  const ret = createInput(list, "ret");
+  const dep = createInput(list, "dep");
+  const pl = createInput(list, "pl");
+  const img = createInput(list, "img");
+
   const name = document.createElement("input");
-  const newValue = document.createElement("input");
+  const flight = document.createElement("input");
   const submit = document.createElement("input");
-  const icon = setIcon(type);
 
-  form.action = setFormaction(type)
+  name.name = "name"
+  flight.name = "flight"
 
-  newValue.type = "text";
-  newValue.name = "type"
-  submit.type = "submit";
-  icon.classList.add("icon-header");
+  name.type = "text"
+  flight.type = "number"
+  submit.type ="submit"
 
-  form.className = "float-container gap hidden";
-  form.id = i + "show" + type;
-
-  submit.className ="edit-submit"
-  newValue.className ="edit-input"
-
-  div.className ="edit-div"
+  name.value = localStorage.getItem("name")
+  flight.value = list.id
+  submit.value ="Update"
 
   name.className = "hidden"
-  name.type = "text"
-  name.id = "textname"
-  name.value = localStorage.getItem("name")
+  flight.className = "hidden"
 
-  id.className = "hidden";
-  id.type = "number";
-  id.name = "id";
-  id.value = i;
+  form.id = "edit"+list.id;
 
-  div.appendChild(icon);
-  div.appendChild(newValue);
-  form.appendChild(div);
-  form.appendChild(submit);
-  form.appendChild(id);
-  form.appendChild(name)
+  ul.appendChild(des);
+  ul.appendChild(dep);
+  ul.appendChild(ret);
+  ul.appendChild(pl);
+  ul.appendChild(img);
+
+  form.appendChild(ul);
+  form.appendChild(name);
+  form.appendChild(flight);
+  form.appendChild(submit)
   return form;
+}
+function createInput(list, type) {
+  const li = document.createElement("li");
+  const input = document.createElement("input");
+  const icon = setIcon(type);
+  icon.classList.add("icon-header");
+  input.type = "text";
+  input.name = type;
+  input.placeholder = "unchanged";
+
+  li.className="float-container";
+  if (type == "des") {
+    input.value = list.des;
+    li.appendChild(icon);
+    li.appendChild(input);
+    return li;
+  } else if (type == "dep") {
+    input.value = list.depart;
+    li.appendChild(icon);
+    li.appendChild(input);
+    return li;
+  } else if (type == "ret") {
+    input.value = list.return;
+    li.appendChild(icon);
+    li.appendChild(input);
+    return li;
+  }
+  else if (type == "pl") {
+    input.value = list.plane;
+    li.appendChild(icon);
+    li.appendChild(input);
+    return li;
+  }
+  else if (type == "img") {
+    input.value = list.image;
+    li.appendChild(icon);
+    li.appendChild(input);
+    return li;
+  }
 }
 function setIcon(type) {
   const icon = document.createElement("i");
@@ -144,6 +178,10 @@ function setIcon(type) {
     icon.className = "fa-solid fa-plane ";
     return icon;
   }
+  else if (type == "img") {
+    icon.className = "fa-solid fa-image ";
+    return icon;
+  }
 }
 function setFormaction(type) {
   const icon = document.createElement("i");
@@ -156,10 +194,13 @@ function setFormaction(type) {
   } else if (type == "pl") {
     return "../../Backend/EditPlane.php";
   }
+  else if (type == "img") {
+    return "../../Backend/EditImage.php";
+  }
 }
 function showPop() {
   document.getElementById("addFlight").classList.remove("hidden");
 }
-function showEditPop(i, type) {
-  document.getElementById(i + "show" + type).classList.remove("hidden");
+function showEditPop(i) {
+  document.getElementById("edit" + i).classList.remove("hidden");
 }

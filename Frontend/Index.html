@@ -16,16 +16,18 @@
     <link rel="stylesheet" href="./CSS/colors.css" />
     <link rel="stylesheet" href="./CSS/utilities.css" />
     <link rel="stylesheet" href="./CSS/home.css" />
+    <link rel="stylesheet" href="./CSS/footer.css" />
     <title>Document</title>
   </head>
   <body>
     <header>
-      <nav class="nav bg-primary txt-white flex space-between align-center">
-        <div></div>
-        <ul class="navbar bg-txt-white flex space-evenly align-center">
-          <li><a href="./Index.html">Home</a></li>
-          <li><a href="./Pages/">Flights</a></li>
-          <li><a href="./Pages/login.html">Login</a></li>
+      <nav class="nav bg-secondary flex end txt-white">
+        <ul class="navbar bg-txt-white flex ">
+          <li><a id="index.html" onclick="Redirect(this)"><i class="fa-solid fa-house"></i>Home</a></li>
+          <li><a id="Pages/flights.html" onclick="Redirect(this)"><i class="fa-solid fa-plane"></i>Flights</a></li>
+          <li id="login"><a id="Pages/login.html" onclick="Redirect(this)">Login</a></li>
+          <li class="hidden" id="profile"><a id="Pages/profile.html" onclick="Redirect(this)"><i class="fa-solid fa-user hidden" id="profile"></i></a></li>
+          <li class="hidden" id="logout"><a id="index.html" onclick="logout(this)"><i class="fa-solid fa-right-from-bracket hidden" id="logout"></i></a></li>
         </ul>
       </nav>
     </header>
@@ -43,45 +45,99 @@
       </section>
 
       <section class="flights-container flex center column bg-white">
-        <h1>Flights</h1>
         <div class="flight-cards flex center" id="flight-cards">
-        <div class="more flex end align-center">
-          <a href="">more<i class="fa-solid fa-arrow-right"></i></a>
+
         </div>
       </section>
+      <div class="flex end"><h5><a id="Pages/flights.html" onclick="Redirect(this)">more<i class="fa-solid fa-arrow-right"></i></h5></a></div>
 
       <section class="reviews-container flex center column">
-        <h1>REVIEWS</h1>
         <div class="reviews-div flex bg-secondary center column">
           <main class="reviews flex column center" id="reviews">
             
           </main>
           <div class="flex more align-center end">
-            <a href="">more<i class="fa-solid fa-arrow-right"></i></a>
+            
           </div>
+          
         </div>
       </section>
+      <div class="flex end"><h5><a>more<i class="fa-solid fa-arrow-right"></i></h5></a></div>
     </main>
 
-    <footer class="footer bg-primary txt-white flex center">
-      <div></div>
-      <ul>
-        <li>example</li>
-        <li>example</li>
-        <li>example</li>
-      </ul>
-      <ul>
-        <li>example</li>
-        <li>example</li>
-        <li>example</li>
-      </ul>
-      <ul>
-        <li>example</li>
-        <li>example</li>
-        <li>example</li>
-      </ul>
-    </footer>
+    <footer>
+      <div class="container">
+        <div class="footer_content">
+          <div class="first_section">
+            <h3 class="footer_headings">About Us</h3>
+            <img src="images/logo-1.png" alt="" />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. A
+              adipisci minus ratione nulla cum ut repellendus omnis, odit
+              ducimus nisi?
+            </p>
+            <div class="social_icons">
+              <i class="fa-brands fa-facebook"></i>
+              <i class="fa-brands fa-twitter"></i>
+              <i class="fa-brands fa-pinterest"></i>
+              <i class="fa-brands fa-youtube"></i>
+            </div>
+          </div>
+          <div class="second_section">
+            <h3 class="footer_headings">Useful links</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Projects</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="third_section">
+            <h3 class="footer_headings">Address</h3>
+            <ul>
+              <li>
+                <i class="fa fa-envelope"></i>
+                <span>admin@onlineittuts.com</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <span>A108 Adam Street, New York, NY </span>
+              </li>
 
-    <script src="../Scripts/home.js"></script>
+              <li>
+                <i class="fa-solid fa-phone"></i>
+                <span>+15589 55488 55</span>
+              </li>
+            </ul>
+          </div>
+          <div class="fourth_section">
+            <h3 class="footer_headings">Contact Us</h3>
+            <form action="#">
+              <div class="form_control">
+                <input type="text" placeholder="Enter an Email" />
+              </div>
+              <div class="form_control">
+                <textarea
+                  name=""
+                  id=""
+                  cols="10"
+                  rows="5"
+                  placeholder="Write Message....."
+                ></textarea>
+              </div>
+              <button type="button">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="footer_txt">
+        <p>
+          All rights reservered by
+          <a href="https://www.onlineittuts.com">OnlineITtuts</a> &copy; 2023.
+        </p>
+      </div>
+
+    <script src="./Scripts/home.js"></script>
   </body>
 </html>

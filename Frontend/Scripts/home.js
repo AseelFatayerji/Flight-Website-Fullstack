@@ -2,6 +2,12 @@ const upcomingFlights = document.getElementById("upcoming-cards");
 const flightCards = document.getElementById("flight-cards");
 const reviews = document.getElementById("reviews");
 
+window.onload = () =>{
+  if(localStorage.getItem("userId") == null){
+    return
+  }
+  hideLogin()
+}
 const getAllFlights = async () => {
   const response = await fetch(
     "http://localhost/fullstack/Flight%20Website/Backend/getAllFlights.php",
@@ -11,7 +17,6 @@ const getAllFlights = async () => {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       data.forEach((element) => {
         createFlightCard(element);
       });
@@ -23,14 +28,13 @@ const getAllFlights = async () => {
 
 const getUpcomingFlights = async () => {
   const response = await fetch(
-    "http://localhost:81/flight-website-fullstack/Backend/getUpcomingFlights.php",
+    "http://localhost/fullstack/Flight%20Website/Backend/getUpcomingFlights.php",
     {
       method: "GET",
     }
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       data.forEach((element) => {
         createUpcomingFlightCard(element);
       });
@@ -42,14 +46,13 @@ const getUpcomingFlights = async () => {
 
 const getGoodReviews = async () => {
   const response = await fetch(
-    "http://localhost:81/flight-website-fullstack/Backend/getGoodReviews.php",
+    "http://localhost/fullstack/Flight%20Website/Backend/getGoodReviews.php",
     {
       method: "GET",
     }
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       data.forEach((element) => {
         createGoodReviewCard(element);
       });
@@ -67,7 +70,6 @@ const createFlightCard = (flight) => {
     alt=""
   />
   <div class="flex center column">
-    <p>${flight.id}</p>
     <ul class="flex space-evenly">
       <li>${flight.destination}</li>
       <li>${flight.departure}</li>
@@ -80,17 +82,11 @@ const createFlightCard = (flight) => {
 
 const createUpcomingFlightCard = (flight) => {
   const card = document.createElement("div");
-  card.classList.add("flight-card", "txt-white", "bg-secondary");
-  card.innerHTML = `<img
-    src="${flight.image}"
-    alt=""
-  />
+  card.classList.add("flight-card2", "txt-white", "bg-secondary");
+  card.innerHTML = `
   <div class="flex center column">
-    <p>${flight.id}</p>
     <ul class="flex space-evenly">
       <li>${flight.destination}</li>
-      <li>${flight.departure}</li>
-      <li>${flight.return}</li>
     </ul>
   </div>`;
 
@@ -110,7 +106,35 @@ const createGoodReviewCard = (review) => {
 
   reviews.appendChild(card);
 };
-
+function Redirect(item) {
+  let name = localStorage.getItem("userId");
+  if(name != null){
+  let url =
+    "http://localhost/fullstack/Flight%20Website/Frontend/" +
+    item.id +
+    "?user=" +
+    name;
+  window.location.href = url;
+  }
+  else{
+    let url =
+    "http://localhost/fullstack/Flight%20Website/Frontend/" +
+    item.id;
+  window.location.href = url;
+  }
+}
+function logout(item) {
+  let url =
+    "http://localhost/fullstack/Flight%20Website/Frontend/pages/" + item.id;
+  localStorage.clear();
+  sessionStorage.clear();
+  window.location.href = url;
+}
+function hideLogin(){
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("logout").classList.remove("hidden");
+  document.getElementById("profile").classList.remove("hidden");
+}
 getUpcomingFlights();
 getAllFlights();
 getGoodReviews();
