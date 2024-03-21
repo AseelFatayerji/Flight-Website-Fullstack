@@ -102,9 +102,9 @@ const createGoodReviewCard = (review) => {
   const card = document.createElement("div");
   card.classList.add("review-card", "txt-white", "bg-primary","flex","center","column");
   card.innerHTML = `<ul class="flex space-evenly review-text">
-  <li>${review.rating}</li>
-  <li>flight ${review.flight}</li>
   <li>${review.name}</li>
+  <li>flight ${review.flight}</li>
+  <li>${review.rating}</li>
 </ul>
 <p class="review-text">${review.comment}</p>`;
 
