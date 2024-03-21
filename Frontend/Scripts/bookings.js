@@ -36,7 +36,7 @@ function displayOne(booking) {
   const actions = document.createElement("div");
   const icon = document.createElement("i");
   const trash = document.createElement("i");
-  const edit = document.createElement("i")
+  const edit = document.createElement("i");
 
   const user = createListItem(booking.user, "use", booking.id);
   const email = createListItem(booking.email, "email", booking.id);
@@ -48,7 +48,7 @@ function displayOne(booking) {
 
   form.action = "../../Backend/EditBooking.php";
   form.method = "post";
-  form.className = "form self-center hidden"
+  form.className = "form self-center hidden";
 
   card.className = "row";
   card_body.className = "table-body space-even ";
@@ -56,15 +56,20 @@ function displayOne(booking) {
   icon.className = "fa-solid fa-book";
   trash.className = "fa-solid fa-trash trash";
   trash.onclick = () => {
-    form.action = "../../Backend/DeleteBooking.php"
-    form.submit()
+    localStorage.setItem("editbooking", 1);
+
+    setTimeout(() => {
+      form.action = "../../Backend/DeleteBooking.php";
+      form.submit();
+    }, "1000");
   };
   edit.className = "fa-regular fa-pen-to-square icon";
   edit.onclick = () => {
+    localStorage.setItem("editbooking", 1);
     showPop(booking.id);
   };
-  
-  actions.className ="float-container space-end gap"
+
+  actions.className = "float-container space-end gap";
   actions.appendChild(trash);
   actions.appendChild(edit);
 
@@ -115,21 +120,21 @@ function createForm(list) {
   const booking = document.createElement("input");
   const submit = document.createElement("input");
 
-  name.name = "name"
-  booking.name = "booking"
+  name.name = "name";
+  booking.name = "booking";
 
-  name.type = "text"
-  booking.type = "text"
-  submit.type ="submit"
+  name.type = "text";
+  booking.type = "text";
+  submit.type = "submit";
 
-  name.value = localStorage.getItem("name")
-  booking.value = list.id
-  submit.value ="Update"
+  name.value = localStorage.getItem("name");
+  booking.value = list.id;
+  submit.value = "Update";
 
-  name.className = "hidden"
-  booking.className = "hidden"
+  name.className = "hidden";
+  booking.className = "hidden";
 
-  form.id = "editbooking"+list.id;
+  form.id = "editbooking" + list.id;
 
   ul.appendChild(des);
   ul.appendChild(dep);
@@ -138,7 +143,7 @@ function createForm(list) {
   form.appendChild(ul);
   form.appendChild(name);
   form.appendChild(booking);
-  form.appendChild(submit)
+  form.appendChild(submit);
   return form;
 }
 function createInput(list, type) {
@@ -150,7 +155,7 @@ function createInput(list, type) {
   input.name = type;
   input.placeholder = "unchanged";
 
-  li.className="float-container";
+  li.className = "float-container";
   if (type == "des") {
     input.value = list.des;
     li.appendChild(icon);
@@ -184,5 +189,5 @@ function setIcon(type) {
 }
 
 function showPop(i) {
-  document.getElementById("editbooking"+i).classList.remove("hidden");
+  document.getElementById("editbooking" + i).classList.remove("hidden");
 }

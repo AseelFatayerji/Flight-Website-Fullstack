@@ -76,8 +76,11 @@ function createForm(list) {
     form.submit();
   };
   rej.onclick = () => {
-    form.action = "../../Backend/RejectReview.php";
-    form.submit();
+    localStorage.setItem("rejRev", 1);
+    setTimeout(() => {
+      form.action = "../../Backend/RejectReview.php";
+      form.submit();
+    }, "1000");
   };
   name.name = "textname";
   name.type = "text";
@@ -103,12 +106,12 @@ function createListItem(item) {
 
   return li;
 }
-function  createStars(star){
-    const stars = document.createElement("div")
-    for(let i = 1; i <= parseInt(star);i++ ){
-        const rate = document.createElement("i")
-        rate.className = "fa-solid fa-star"
-        stars.appendChild(rate)
-    }
-    return stars
+function createStars(star) {
+  const stars = document.createElement("div");
+  for (let i = 1; i <= parseInt(star); i++) {
+    const rate = document.createElement("i");
+    rate.className = "fa-solid fa-star";
+    stars.appendChild(rate);
+  }
+  return stars;
 }

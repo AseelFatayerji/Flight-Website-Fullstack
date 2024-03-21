@@ -7,7 +7,7 @@ $wallet = $_POST['wallet'];
 $amount = $_POST['amount'];;
 $coin = $_POST['id'];
 
-$query = $mysqli->prepare('UPDATE wallets SET balance = ? WHERE wallet_id = ?;');
+$query = $mysqli->prepare('UPDATE wallets SET balance = ?+balance WHERE wallet_id = ?;');
 $query->bind_param('ii',$amount, $wallet);
 $query->execute();
 $response['status'] = "success";

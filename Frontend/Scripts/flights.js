@@ -32,12 +32,17 @@ function displayOne(flight) {
   const trash = document.createElement("i");
   edit.className = "fa-regular fa-pen-to-square icon";
   edit.onclick = () => {
+    localStorage.setItem("editflight",1)
     showEditPop(flight.id);
   };
   trash.className = "fa-solid fa-trash trash";
   trash.onclick = () => {
-    form.action = "../../Backend/DeleteFlight.php"
-    form.submit()
+    localStorage.setItem("editflight",1)
+    setTimeout(() => {
+      form.action = "../../Backend/DeleteFlight.php"
+      form.submit()
+    }, "1000");
+    
   };
 
   const des = createListItem(flight.des, "des", flight.id);
@@ -183,21 +188,7 @@ function setIcon(type) {
     return icon;
   }
 }
-function setFormaction(type) {
-  const icon = document.createElement("i");
-  if (type == "des") {
-    return "../../Backend/EditDes.php";
-  } else if (type == "ret") {
-    return "../../Backend/EditRet.php";
-  } else if (type == "dep") {
-    return "../../Backend/EditDep.php";
-  } else if (type == "pl") {
-    return "../../Backend/EditPlane.php";
-  }
-  else if (type == "img") {
-    return "../../Backend/EditImage.php";
-  }
-}
+
 function showPop() {
   document.getElementById("addFlight").classList.remove("hidden");
 }

@@ -155,7 +155,6 @@ const getBalance = () => {
     })
     .then((data) => {
       balanceamount.innerHTML = ` <small>Balance: $${data.user.balance}</small>`;
-      console.log(data.user);
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -177,3 +176,67 @@ sendAmount.addEventListener("click", (e) => {
 fetchUserProfile(userId);
 getBalance();
 getBooking();
+window.onload = () =>{
+  checkAlerts()
+}
+function checkAlerts(){
+
+  const rev = parseInt(localStorage.getItem("rejRev"))
+  const flight =parseInt(localStorage.getItem("editflight"))
+  const book =parseInt(localStorage.getItem("editbooking"))
+  const wall =parseInt(localStorage.getItem("rejwallet"))
+  if(rev == 1){
+      createAlerts("review","rejected")
+  }
+  if(flight == 1){
+      createAlerts("flight","changed")
+  }
+  if(wall == 1){
+      createAlerts("wallet request","rejected")
+  }
+  if(book == 1){
+      createAlerts("booking","changed")
+  }
+
+}
+function createAlerts(type,action){
+const container = document.getElementById("overlay");
+const pop = document.createElement("div")    
+const header = document.createElement("div")    
+const body = document.createElement("div")  
+const input = document.createElement("input")  
+const label = document.createElement("label")
+const label2 = document.createElement("label")
+
+input.type = "button"
+input.value = "close"
+input.onclick = ()=>{
+  container.removeChild(pop)
+  if(type == "flight"){
+    
+      localStorage.setItem("editflight",0)
+      
+  }
+  if(type == "book"){
+      localStorage.setItem("editbooking",0)
+  }
+  if(type == "review"){
+      localStorage.setItem("rejRev",0)
+  }
+  if(type == "wallet request"){
+      localStorage.setItem("rejwallet",0)
+  }
+}
+label.innerText = "Your "+type+ " has been "+action;
+label2.innerHTML = "Update"
+body.className="pop-body"
+header.className="pop-header"
+pop.className="pop"
+
+body.appendChild(label)
+body.appendChild(input)
+header.appendChild(label2)
+pop.appendChild(header);
+pop.appendChild(body)
+container.appendChild(pop)
+}
