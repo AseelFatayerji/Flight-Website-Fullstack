@@ -1,5 +1,3 @@
-const { data } = require("jquery");
-
 const one = document.getElementById("1");
 const two = document.getElementById("2");
 const three = document.getElementById("3");
@@ -14,6 +12,7 @@ const flight_img = document.getElementById("flight-img");
 const booking = document.getElementById("booking");
 const upload_btn = document.getElementById("upload-btn")
 const book_btn = document.getElementById("book-btn")
+const review = document.getElementById("review-text");
 let stars = document.querySelectorAll("star");
 
 
@@ -83,26 +82,31 @@ const addReview = async () => {
 one.addEventListener("click", () => {
   one.classList.toggle("fa-regular")
   one.classList.toggle("fa-solid")
+  rating = 1;
 })
 
 two.addEventListener("click", () => {
   two.classList.toggle("fa-regular")
   two.classList.toggle("fa-solid")
+  rating = 2;
 })
 
 three.addEventListener("click", () => {
   three.classList.toggle("fa-regular")
   three.classList.toggle("fa-solid")
+  rating = 3;
 })
 
 four.addEventListener("click", () => {
   four.classList.toggle("fa-regular")
   four.classList.toggle("fa-solid")
+  rating = 4;
 })
 
 five.addEventListener("click", () => {
-  five.classList.remove("fa-regular")
-  five.classList.add("fa-solid")
+  five.classList.toggle("fa-regular")
+  five.classList.toggle("fa-solid")
+  rating = 5;
 })
 
 
@@ -114,6 +118,15 @@ book_btn.addEventListener("click", () => {
 
 upload_btn.addEventListener("click", () => {
   addReview();
+  review.value = "";
+  one.classList.remove("fa-solid")
+  two.classList.remove("fa-solid")
+  three.classList.remove("fa-solid")
+  four.classList.remove("fa-solid")
+  five.classList.remove("fa-solid")
 })
+
+
+console.log(rating)
 
 getFlight();
