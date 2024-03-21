@@ -10,14 +10,14 @@ const return_date = document.getElementById("return");
 const price = document.getElementById("price");
 const flight_img = document.getElementById("flight-img");
 const booking = document.getElementById("booking");
-const upload_btn = document.getElementById("upload-btn")
-const book_btn = document.getElementById("book-btn")
+const upload_btn = document.getElementById("upload-btn");
+const book_btn = document.getElementById("book-btn");
 const review = document.getElementById("review-text");
 let stars = document.querySelectorAll("star");
 
+localStorage.setItem("userId", 1);
 
 let rating = 0;
-
 
 const URLParams = (id) => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -39,10 +39,10 @@ const getFlight = async () => {
     .then((data) => {
       console.log(data);
       flight_img.src = data.flight.image;
-      destination.innerHTML +=" "+ data.flight.destination;
-      departure_date.innerText +=" "+ data.flight.departure;
-      return_date.innerText +=" "+ data.flight.return;
-      price.innerText +=" "+ data.flight.price;
+      destination.innerHTML += " " + data.flight.destination;
+      departure_date.innerText += " " + data.flight.departure;
+      return_date.innerText += " " + data.flight.return;
+      price.innerText += " " + data.flight.price;
     })
     .catch((error) => {
       console.log(error);
@@ -50,83 +50,87 @@ const getFlight = async () => {
 };
 
 const bookFlight = async () => {
-    const form_data = new FormData();
-    form-data.append("flight_id", flight_id);
-    form-data.append("user_id", user_id);
-const response = await fetch(`http://localhost:81/flight-website-fullstack/Backend/getFlight.php`, {
-method: "POST",
-body: form_data,
-})
+  try{
+  const form_data = new FormData();
+  form_data.append("flight_id", flight_id);
+  form_data.append("user_id", user_id);
+  const response = await fetch(
+    `http://localhost:81/flight-website-fullstack/Backend/addBooking.php`,
+    {
+      method: "POST",
+      body: form_data
+    }
 
-}
+    
 
-
+  ); const data = await response.json();
+    console.log(data);
+   }catch(error){ console.log(error); }
+};
 
 const addReview = async () => {
+  try{
   const form_data = new FormData();
   form_data.append("flight_id", flight_id);
   form_data.append("user_id", user_id);
   form_data.append("rating", rating);
-  form_data.append("review", review);
+  form_data.append("review", review.value);
   const response = await fetch(
     `http://localhost:81/flight-website-fullstack/Backend/addReview.php`,
     {
       method: "POST",
       body: form_data,
     }
-  );
+  );const data = await response.json();
+  console.log(data);
+  }catch(error){
+  console.log(error);
 }
-
-
+};
 
 one.addEventListener("click", () => {
-  one.classList.toggle("fa-regular")
-  one.classList.toggle("fa-solid")
+  one.classList.toggle("fa-regular");
+  one.classList.toggle("fa-solid");
   rating = 1;
-})
+});
 
 two.addEventListener("click", () => {
-  two.classList.toggle("fa-regular")
-  two.classList.toggle("fa-solid")
+  two.classList.toggle("fa-regular");
+  two.classList.toggle("fa-solid");
   rating = 2;
-})
+});
 
 three.addEventListener("click", () => {
-  three.classList.toggle("fa-regular")
-  three.classList.toggle("fa-solid")
+  three.classList.toggle("fa-regular");
+  three.classList.toggle("fa-solid");
   rating = 3;
-})
+});
 
 four.addEventListener("click", () => {
-  four.classList.toggle("fa-regular")
-  four.classList.toggle("fa-solid")
+  four.classList.toggle("fa-regular");
+  four.classList.toggle("fa-solid");
   rating = 4;
-})
+});
 
 five.addEventListener("click", () => {
-  five.classList.toggle("fa-regular")
-  five.classList.toggle("fa-solid")
+  five.classList.toggle("fa-regular");
+  five.classList.toggle("fa-solid");
   rating = 5;
-})
-
-
-
+});
 
 book_btn.addEventListener("click", () => {
   bookFlight();
-})
+});
 
 upload_btn.addEventListener("click", () => {
   addReview();
   review.value = "";
-  one.classList.remove("fa-solid")
-  two.classList.remove("fa-solid")
-  three.classList.remove("fa-solid")
-  four.classList.remove("fa-solid")
-  five.classList.remove("fa-solid")
-})
+  one.classList.remove("fa-solid");
+  two.classList.remove("fa-solid");
+  three.classList.remove("fa-solid");
+  four.classList.remove("fa-solid");
+  five.classList.remove("fa-solid");
+});
 
-
-console.log(rating)
 
 getFlight();
