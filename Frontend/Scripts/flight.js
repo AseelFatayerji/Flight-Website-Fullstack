@@ -28,20 +28,17 @@ const flight_id = URLParams("id");
 const user_id = localStorage.getItem("userId");
 
 
-const getFlight = async () => {
-  const response = await fetch(
+const getFlight = () => {
+  const response = fetch(
     `http://localhost/fullstack/Flight%20Website/Backend/getFlight.php?flight=${flight_id}`,
-    {
-      method: "GET",
-    }
   )
     .then((response) => response.json())
     .then((data) => {
-      flight_img.src = data.flight.image;
-      destination.innerHTML += " " + data.flight.destination;
-      departure_date.innerText += " " + data.flight.departure;
-      return_date.innerText += " " + data.flight.return;
-      price.innerText += " " + data.flight.price;
+      flight_img.src = data.flights.image;
+      destination.innerHTML += " " + data.flights.destination;
+      departure_date.innerText += " " + data.flights.departure;
+      return_date.innerText += " " + data.flights.return;
+      price.innerText += " $" + data.flights.price;
     })
     .catch((error) => {
       console.log(error);
